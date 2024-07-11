@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@color/background_color">
+
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="395dp"
+        android:layout_height="715dp"
+        android:alpha="0.5"
+        android:scaleType="centerCrop"
+        android:src="@drawable/carfon" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewCart"
+        android:layout_width="395dp"
+        android:layout_height="623dp"
+        android:layout_above="@id/buttonCart"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="12dp"
+        android:clipToPadding="false"
+        android:padding="24dp"
+        android:scrollbars="vertical" />
+
+    <!-- RecyclerView para mostrar la lista de productos eliminados -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewDeleted"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_above="@id/buttonCart"
+        android:layout_alignParentTop="true"
+        android:clipToPadding="false"
+        android:padding="24dp"
+        android:scrollbars="vertical"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/textViewTotal"
+        android:layout_width="179dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/buttonCart"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="113dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="-80dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:text="Total: $0.00"
+        android:textColor="@color/red"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/buttonCart"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="29dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="12dp"
+        android:text="Efectivo"
+        android:textColor="@android:color/white"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/buttonEmergente"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="29dp"
+        android:layout_marginStart="240dp"
+        android:backgroundTint="@color/chocolate"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="12dp"
+        android:text="Tarjeta"
+        android:textColor="@android:color/white"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/textViewDeletedEmpty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="No hay productos eliminados"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        android:textColor="@color/red"
+        android:visibility="gone"
+        android:fontFamily="sans-serif"/>
+
+</RelativeLayout>

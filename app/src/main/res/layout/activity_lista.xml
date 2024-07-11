@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- ImageView para el fondo -->
+    <ImageView
+        android:id="@+id/backgroundLogo"
+        android:layout_width="match_parent"
+        android:layout_height="715dp"
+        android:alpha="0.1"
+        android:scaleType="centerCrop"
+        android:src="@drawable/logo" />
+
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="match_parent"
+        android:layout_height="689dp"
+        android:alpha="0.2"
+        android:scaleType="centerCrop"
+        android:src="@drawable/carritofon" />
+
+    <!-- TextView para el mensaje encima del SearchView -->
+    <TextView
+        android:id="@+id/searchHint"
+        android:layout_width="387dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/papaya_whip"
+        android:text="Recuerda que el buscador nos ayuda a encontrar productos por edad, marca o raza de tu mascota"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+
+    <!-- SearchView -->
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="395dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/searchHint"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:iconifiedByDefault="false"
+        android:queryHint="Buscar productos"
+        android:background="@color/purple_200"
+        android:textSize="20sp" />
+
+    <!-- RecyclerView para mostrar los productos -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewProducts"
+        android:layout_width="match_parent"
+        android:layout_height="571dp"
+        android:layout_below="@id/searchView"
+        android:layout_marginTop="-3dp"
+        android:clipToPadding="false"
+        android:padding="15dp"
+        android:scrollbars="vertical" />
+
+    <!-- Botón "Compra rápida" al final de la actividad -->
+
+    <ImageView
+        android:id="@+id/imageViewPrincipal"
+        android:layout_width="58dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="175dp"
+        android:layout_marginTop="677dp"
+        android:background="@drawable/ico_carrito" />
+    <Button
+        android:id="@+id/buttonQuickBuy"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/blue"
+        android:textColor="@android:color/white"
+        android:text="VER CARRITO"
+        android:textSize="15sp" />
+
+</RelativeLayout>

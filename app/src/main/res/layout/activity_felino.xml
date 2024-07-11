@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".ActivityCats.FelinoActivity">
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.7"
+        android:scaleType="centerCrop"
+        android:src="@drawable/cats" />
+
+    <!-- Botón "Alimentos" -->
+    <ImageView
+        android:id="@+id/imageViewAlimentacion"
+        android:layout_width="167dp"
+        android:layout_height="155dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="115dp"
+        android:background="@drawable/catcoo" />
+    <Button
+        android:id="@+id/buttonAlimentos"
+        android:layout_width="115dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="160dp"
+        android:backgroundTint="@color/purple_200"
+        android:text="Alimentos"
+        android:textColor="@android:color/white"
+        android:textSize="15sp" />
+
+    <!-- Botón "Zona de Juegos" -->
+    <ImageView
+        android:id="@+id/imageViewJuegos"
+        android:layout_width="167dp"
+        android:layout_height="155dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="218dp"
+        android:layout_marginEnd="115dp"
+        android:background="@drawable/catplayy" />
+    <Button
+        android:id="@+id/buttonZonaJuegos"
+        android:layout_width="125dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/buttonAlimentos"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="160dp"
+        android:backgroundTint="@color/chocolate"
+        android:text="Juegos"
+        android:textColor="@android:color/white"
+        android:textSize="15sp" />
+
+    <!-- Botón "Vestimenta" -->
+    <ImageView
+        android:id="@+id/imageViewVestimenta"
+        android:layout_width="167dp"
+        android:layout_height="155dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="425dp"
+        android:layout_marginEnd="115dp"
+        android:background="@drawable/catclo" />
+    <Button
+        android:id="@+id/buttonVestimenta"
+        android:layout_width="125dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/buttonZonaJuegos"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="157dp"
+        android:backgroundTint="@color/teal_700"
+        android:text="Vestimenta"
+        android:textColor="@android:color/white"
+        android:textSize="15sp" />
+
+    <!-- Botón " Home y su imagen " -->
+    <ImageView
+        android:id="@+id/imageViewPrincipal"
+        android:layout_width="38dp"
+        android:layout_height="35dp"
+        android:layout_below="@id/buttonAlimentos"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="448dp"
+        android:background="@drawable/ico_home" />
+
+    <!-- Botón " Carrito y su imagen " -->
+    <Button
+        android:id="@+id/buttonHome"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="41dp"
+        android:backgroundTint="@color/red"
+        android:text="Home"
+        android:textColor="@android:color/white"
+        android:textSize="15sp" />
+
+    <ImageView
+        android:id="@+id/imageViewCarrito"
+        android:layout_width="58dp"
+        android:layout_height="55dp"
+        android:layout_below="@id/buttonAlimentos"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="438dp"
+        android:background="@drawable/ico_carrito" />
+
+    <!-- Botón " Intrucciones y su imagen " -->
+    <Button
+        android:id="@+id/buttonCarrito"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="162dp"
+        android:layout_marginBottom="41dp"
+        android:backgroundTint="@color/blue"
+        android:text="Carrito"
+        android:textColor="@android:color/white"
+        android:textSize="15sp" />
+
+    <ImageView
+        android:id="@+id/imageViewBook"
+        android:layout_width="38dp"
+        android:layout_height="35dp"
+        android:layout_below="@id/buttonAlimentos"
+        android:layout_marginStart="318dp"
+        android:layout_marginTop="448dp"
+        android:background="@drawable/ico_book" />
+
+    <Button
+        android:id="@+id/buttonInstrucciones"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="290dp"
+        android:layout_marginBottom="41dp"
+        android:backgroundTint="?attr/colorAccent"
+        android:text="README"
+        android:textColor="@android:color/white"
+        android:textSize="15sp" />
+
+</RelativeLayout>

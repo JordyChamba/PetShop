@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Base application theme -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <!-- Otros atributos que desees personalizar -->
+    </style>
+
+    <!-- Tema para tu aplicación PetShop basado en AppTheme -->
+    <style name="Theme.PetShop" parent="AppTheme">
+        <!-- Customize your PetShop theme here -->
+        <!-- Puedes agregar personalizaciones adicionales si es necesario -->
+    </style>
+
+</resources>

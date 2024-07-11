@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".views.MainActivity">
+
+    <ImageView
+        android:id="@+id/backgroundLogo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.4"
+        android:scaleType="centerCrop"
+        android:src="@drawable/logo" />
+
+    <ImageView
+        android:id="@+id/imageViewPerro"
+        android:layout_width="167dp"
+        android:layout_height="160dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="130dp"
+        android:background="@drawable/ico_dog"
+        android:contentDescription="Perro" />
+
+    <Button
+        android:id="@+id/buttonCanino"
+        android:layout_width="105dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/imageViewPerro"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="-5dp"
+        android:backgroundTint="@color/red"
+        android:text="Perro"
+        android:textColor="@android:color/white"
+        android:textSize="25sp" />
+
+    <!-- Botón "Instrucciones" -->
+    <ImageView
+        android:id="@+id/imageViewGato"
+        android:layout_width="167dp"
+        android:layout_height="163dp"
+        android:layout_below="@id/buttonCanino"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/ico_cat"
+        android:contentDescription="Gato" />
+
+    <Button
+        android:id="@+id/buttonGatuno"
+        android:layout_width="105dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/imageViewGato"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="-17dp"
+        android:layout_marginEnd="258dp"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:text="Gato"
+        android:textColor="@android:color/white"
+        android:textSize="25sp" />
+
+    <!-- Botón "Carrito" -->
+
+    <ImageView
+        android:id="@+id/imageViewAves"
+        android:layout_width="160dp"
+        android:layout_height="155dp"
+        android:layout_below="@id/buttonGatuno"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="-194dp"
+        android:layout_marginEnd="18dp"
+        android:background="@drawable/ico_bird"
+        android:contentDescription="Aves" />
+
+    <Button
+        android:id="@+id/buttonAves"
+        android:layout_width="105dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/imageViewAves"
+        android:layout_marginStart="265dp"
+        android:layout_marginTop="-10dp"
+        android:backgroundTint="@color/chocolate"
+        android:text="Aves"
+        android:textColor="@android:color/white"
+        android:textSize="25sp" />
+
+    <ImageView
+        android:id="@+id/imageViewBook"
+        android:layout_width="38dp"
+        android:layout_height="35dp"
+        android:layout_below="@id/buttonCanino"
+        android:layout_marginStart="313dp"
+        android:layout_marginTop="377dp"
+        android:background="@drawable/ico_book" />
+    <Button
+        android:id="@+id/buttonInstrucciones"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="17dp"
+        android:backgroundTint="?attr/colorAccent"
+        android:text="README"
+        android:textColor="@android:color/white"
+        android:textSize="15sp" />
+
+    <ImageView
+        android:id="@+id/imageViewCarrito"
+        android:layout_width="58dp"
+        android:layout_height="55dp"
+        android:layout_below="@id/buttonCanino"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="365dp"
+        android:background="@drawable/ico_carrito"
+        android:contentDescription="Car" />
+    <Button
+        android:id="@+id/buttonCarrito"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="157dp"
+        android:layout_marginBottom="18dp"
+        android:backgroundTint="@color/blue"
+        android:text="CARRITO"
+        android:textColor="@android:color/white"
+        android:textSize="15sp" />
+
+    <ImageView
+        android:id="@+id/imageViewPrincipal"
+        android:layout_width="38dp"
+        android:layout_height="35dp"
+        android:layout_below="@id/buttonCanino"
+        android:layout_marginStart="62dp"
+        android:layout_marginTop="376dp"
+        android:background="@drawable/ico_home"
+        android:contentDescription="Home" />
+    <Button
+        android:id="@+id/buttonHome"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="18dp"
+        android:backgroundTint="@color/red"
+        android:text="Home"
+        android:textColor="@android:color/white"
+        android:textSize="15sp" />
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:layout_centerInParent="true"
+            android:padding="15dp">
+
+            <!-- Fondo oscuro del letrero superior -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#99900000"
+                android:padding="10dp"
+                android:layout_gravity="center">
+
+                <!-- Texto del letrero superior -->
+                <TextView
+                    android:id="@+id/textViewWelcome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="¡Bienvenido a PetShop!"
+                    android:textColor="@android:color/white"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+            </FrameLayout>
+        </FrameLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

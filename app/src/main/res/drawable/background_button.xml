@@ -1,0 +1,6 @@
+<!-- background_button.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@android:color/white" /> <!-- Cambia el color de fondo según tu preferencia -->
+    <corners android:radius="8dp" /> <!-- Opcional: redondea las esquinas si lo deseas -->
+</shape>
