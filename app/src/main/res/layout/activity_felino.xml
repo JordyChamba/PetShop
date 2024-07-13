@@ -9,9 +9,9 @@
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:alpha="0.2"
+        android:alpha="0.4"
         android:scaleType="centerCrop"
-        android:src="@drawable/cats" />
+        android:src="@drawable/logo" />
 
     <!-- Botón "Alimentos" -->
     <ImageView

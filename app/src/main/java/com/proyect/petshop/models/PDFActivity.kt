@@ -1,9 +1,12 @@
 package com.proyect.petshop.models
 
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
+import android.graphics.RectF
 import android.graphics.pdf.PdfDocument
 import android.os.Bundle
 import android.os.Environment
@@ -203,69 +206,24 @@ class PDFActivity : AppCompatActivity() {
 
     private fun generatePDF(products: List<Product>, totalPrice: Double) {
         val document = PdfDocument()
-        val pageInfo = PdfDocument.PageInfo.Builder(595, 842, 1).create() // A4 size: 595x842 points
+        val pageInfo = PdfDocument.PageInfo.Builder(595, 842, 1).create() // Tamaño A4: 595x842 puntos
         var page: PdfDocument.Page? = null
         var canvas: Canvas? = null
         val paint = Paint()
 
-        paint.color = Color.BLACK
-        paint.textSize = 10f
+
+        // Load the logo
+        val logoBitmap = BitmapFactory.decodeResource(resources, R.drawable.pdflogo)
+        val scaledLogo = Bitmap.createScaledBitmap(logoBitmap, pageInfo.pageWidth.toInt(), pageInfo.pageHeight.toInt(), true)
+        val logoPaint = Paint().apply {
+            alpha = 30 // Opacity of the logo (0-255, where 0 is completely transparent and 255 is completely opaque)
+        }
+
 
         // Coordenadas iniciales para el contenido
-        var yPosition = 100f
-        val columnWidths = floatArrayOf(200f, 20f, 20f, 20f) // Ancho de las columnas
+        var yPosition = 150f
+        var productListStartY = yPosition
 
-        // Título de la factura en rojo
-        paint.color = Color.RED
-        paint.textSize = 20f
-        canvas?.drawText("Factura de su compra", 50f, yPosition, paint)
-
-        // Subtítulo "Datos del cliente"
-        yPosition += 40
-        paint.color = Color.BLACK
-        paint.textSize = 10f
-        canvas?.drawText("Datos del cliente", 50f, yPosition, paint)
-
-        // Separador
-        yPosition += 20
-        paint.color = Color.GRAY
-        canvas?.drawLine(50f, yPosition, 550f, yPosition, paint)
-
-        // Texto "Nombre del Cliente"
-        yPosition += 30
-        paint.color = Color.BLACK
-        paint.textSize = 10f
-        canvas?.drawText("Nombre del Cliente: $clienteNombre", 50f, yPosition, paint)
-
-        // Texto "Cédula"
-        yPosition += 20
-        canvas?.drawText("Cédula: $clienteCedula", 50f, yPosition, paint)
-
-        // Tipo de pago
-        yPosition += 20
-        canvas?.drawText("Tipo de Pago: $clienteDireccion", 50f, yPosition, paint)
-
-        // Separador
-        yPosition += 20
-        canvas?.drawLine(50f, yPosition, 550f, yPosition, paint)
-
-        // Dibujar cabeceras de tabla
-        yPosition += 30
-        paint.color = Color.BLACK
-        paint.textSize = 10f
-
-        // Dibujar bordes de la tabla y cabeceras
-        paint.style = Paint.Style.STROKE
-        paint.strokeWidth = 1f
-
-        // Dibujar las cabeceras de la tabla
-        canvas?.drawRect(50f, yPosition, 550f, yPosition + 40, paint) // Encabezado de la tabla
-        canvas?.drawText("Nombre", 70f, yPosition + 30, paint)
-        canvas?.drawText("Precio", 300f, yPosition + 30, paint)
-        canvas?.drawText("Cantidad", 400f, yPosition + 30, paint)
-        canvas?.drawText("Subtotal", 500f, yPosition + 30, paint)
-
-        yPosition += 40
 
         // Dibujar las filas de la tabla con datos de productos
         for (product in products) {
@@ -290,39 +248,138 @@ class PDFActivity : AppCompatActivity() {
                 yPosition = 100f // Reiniciar la posición vertical en la nueva página
 
                 // Repetir el encabezado y cualquier contenido fijo en cada nueva página
-                canvas?.drawText("Factura de su compra", 50f, yPosition, paint)
-                yPosition += 40
-                canvas?.drawText("Datos del cliente", 50f, yPosition, paint)
-                yPosition += 20
+                paint.color = Color.RED
+                paint.textSize = 20f
+                val title = "Factura de compra"
+                val titleWidth = paint.measureText(title)
+                val startX = (pageInfo.pageWidth - titleWidth) / 2
+                canvas?.drawText(title, startX, yPosition, paint)
+                yPosition += 10
+
+                paint.color = Color.BLACK
+                paint.textSize = 10f
+                canvas?.drawText("R.U.C.: 1785456858542", 50f, yPosition, paint)
+                yPosition += 10
+                canvas?.drawText("No: 0000452", 50f, yPosition, paint)
+                yPosition += 10
+                canvas?.drawText("Fecha: 17/07/2024 --- 14:25PM", 50f, yPosition, paint)
+                yPosition += 10
                 canvas?.drawLine(50f, yPosition, 550f, yPosition, paint)
-                yPosition += 30
+                yPosition += 10
+
+                val title1 ="Datos del cliente"
+                val titleWidth1 = paint.measureText(title1)
+                val startX1 = (pageInfo.pageWidth - titleWidth1) / 2
+                canvas?.drawText(title1, startX1, yPosition, paint)
+                yPosition += 10
                 canvas?.drawText("Nombre del Cliente: $clienteNombre", 50f, yPosition, paint)
-                yPosition += 20
+                yPosition += 10
                 canvas?.drawText("Cédula: $clienteCedula", 50f, yPosition, paint)
-                yPosition += 20
-                canvas?.drawText("Tipo de Pago: $clienteDireccion", 50f, yPosition, paint)
-                yPosition += 20
+                yPosition += 10
+                canvas?.drawText("Telefono: $clienteTelefono", 50f, yPosition, paint)
+                yPosition += 10
+                canvas?.drawText("Direccion: $clienteDireccion", 50f, yPosition, paint)
+                yPosition += 10
+                canvas?.drawText("Banco: $clienteBanco", 50f, yPosition, paint)
+                yPosition += 10
+                canvas?.drawText("Numero de la Tarjeta: $clienteNumeroBanco", 50f, yPosition, paint)
+                yPosition += 10
                 canvas?.drawLine(50f, yPosition, 550f, yPosition, paint)
+                yPosition += 10
+
+                val title2 ="Datos del Local"
+                val titleWidth2 = paint.measureText(title2)
+                val startX2 = (pageInfo.pageWidth - titleWidth2) / 2
+                canvas?.drawText(title2, startX2, yPosition, paint)
+                yPosition += 10
+                canvas?.drawText("Nombre del local: PatApp", 50f, yPosition, paint)
+                yPosition += 10
+                canvas?.drawText("Dirección del Local: Av. Patria y 10 de Agosto", 50f, yPosition, paint)
+                yPosition += 10
+                canvas?.drawText("Teléfono: 0978451524568 o 02-458745214", 50f, yPosition, paint)
+                yPosition += 10
+                canvas?.drawText("Correo: PatApp@hotmail.com", 50f, yPosition, paint)
+                yPosition += 10
+                canvas?.drawLine(50f, yPosition, 550f, yPosition, paint)
+                // Dibujar las cabeceras de la tabla en cada nueva página
                 yPosition += 30
 
-                // Dibujar las cabeceras de la tabla en cada nueva página
-                canvas?.drawRect(50f, yPosition, 550f, yPosition + 40, paint) // Encabezado de la tabla
+                // Draw a rectangle for the "Factura" section
+                paint.textSize = 10f
+                paint.color = Color.BLUE
+                val title3 ="Facturacion"
+                val titleWidth3 = paint.measureText(title3)
+                val startX3 = (pageInfo.pageWidth - titleWidth3) / 2
+                canvas?.drawText(title3, startX3, yPosition, paint)
+                yPosition += 10
+
+                paint.color = Color.GRAY // Adjust color as needed
+                paint.style = Paint.Style.STROKE
+                // Encabezado de la tabla
+                canvas?.drawRect(50f, yPosition, pageInfo.pageWidth - 50f, yPosition + 30f, paint)
+                paint.color = Color.RED
+                paint.textSize = 10f
                 canvas?.drawText("Nombre", 70f, yPosition + 30, paint)
-                canvas?.drawText("Precio", 300f, yPosition + 30, paint)
-                canvas?.drawText("Cantidad", 400f, yPosition + 30, paint)
+                canvas?.drawText("Precio", 410f, yPosition + 30, paint)
+                canvas?.drawText("Cantidad", 450f, yPosition + 30, paint)
                 canvas?.drawText("Subtotal", 500f, yPosition + 30, paint)
-
-                yPosition += 40
+                paint.color = Color.BLACK
+                yPosition += 50f
             }
-
+            // Dibujar la línea debajo de las etiquetas y el producto
+            paint.color = Color.BLACK
+            paint.style = Paint.Style.STROKE
+            canvas?.drawRect(
+                RectF(
+                    50f,
+                    yPosition,
+                    (pageInfo.pageWidth - 50).toFloat(),
+                    yPosition + rowHeight
+                ), paint
+            )
+            paint.style = Paint.Style.FILL
             // Dibujar los datos del producto en la tabla
+            paint.color = Color.BLACK
+            paint.textSize = 10f
             canvas?.drawText(product.nombre, 70f, yPosition, paint)
-            canvas?.drawText("$${product.precio}", 300f, yPosition, paint)
-            canvas?.drawText("${product.cantidad}", 400f, yPosition, paint)
-            canvas?.drawText("$${product.precio * product.cantidad}", 500f, yPosition, paint)
-
+            canvas?.drawText("$${product.precio}", 411f, yPosition, paint)
+            canvas?.drawText("${product.cantidad}", 470f, yPosition, paint)
+            canvas?.drawText("$${product.precio * product.cantidad}", 505f, yPosition, paint)
             yPosition += rowHeight // Avanzar la posición vertical
         }
+        canvas?.drawBitmap(scaledLogo, 0f, 0f, logoPaint)
+
+
+        // Dibujar el marco alrededor del total
+        paint.style = Paint.Style.STROKE
+        canvas?.drawRect(
+            RectF(
+                50f,
+                yPosition + 20,
+                (pageInfo.pageWidth - 50).toFloat(),
+                yPosition + 40
+            ), paint
+        )
+        paint.style = Paint.Style.FILL
+
+        // Dibujar el total al final
+        paint.color = Color.RED
+        paint.textSize = 12f
+        canvas?.drawText(
+            "Total: $$totalPrice",
+            (pageInfo.pageWidth - paint.measureText("Total: $$totalPrice")) / 2,
+            yPosition + 30,
+            paint
+
+        )
+
+        // Mostrar mensaje de agradecimiento
+        paint.color = Color.BLUE
+        paint.textSize = 14f
+        val thanksMessage = "Gracias por su compra"
+        val startX4 = (pageInfo.pageWidth - paint.measureText(thanksMessage)) / 2
+        canvas?.drawText(thanksMessage, startX4, yPosition + 70, paint)
+
 
         // Terminar la página actual
         page?.let {

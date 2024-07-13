@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:alpha="0.4"
         android:scaleType="centerCrop"
-        android:src="@drawable/logo" />
+        android:src="@drawable/pdflogo" />
 
     <ImageView
         android:id="@+id/imageViewPerro"
