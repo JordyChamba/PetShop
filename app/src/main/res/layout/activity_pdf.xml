@@ -34,11 +34,38 @@
         android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/textViewPagoTipo"
+        android:id="@+id/textViewClienteDireccion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tipo de Pago: "
+        android:text="Direccion: "
         android:layout_marginTop="88dp"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/textViewClienteTelefono"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="38dp"
+        android:layout_marginStart="180dp"
+        android:text="Telefono: "
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/textViewClienteBanco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_marginStart="180dp"
+        android:text="Banco: "
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/textViewClienteNumeroBanco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="88dp"
+        android:layout_marginStart="180dp"
+        android:text="Numero del Banco: "
         android:textSize="16sp" />
 
     <!-- ScrollView para hacer desplazable el contenido -->
@@ -69,7 +96,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="49dp"
+        android:layout_marginEnd="19dp"
         android:layout_marginBottom="1dp"
         android:text="Total: $0.00"
         android:textColor="@android:color/holo_green_dark"
@@ -78,10 +105,34 @@
 
     <Button
         android:id="@+id/buttonDownload"
-        android:layout_width="146dp"
-        android:layout_height="81dp"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
         android:layout_below="@id/textViewTotal"
-        android:layout_marginTop="-48dp"
-        android:text="Descargar PDF" />
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="-59dp"
+        android:backgroundTint="@color/red"
+        android:text="PAGAR"
+        android:textColor="@android:color/white" />
+
+    <ImageView
+        android:id="@+id/imageViewRegresar"
+        android:layout_width="38dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="657dp"
+        android:background="@drawable/regresar"
+        android:onClick="onRegresarClick" />
+    <Button
+        android:id="@+id/buttonRegresar"
+        android:layout_width="105dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="#43A047"
+        android:text="Regresar"
+        android:textColor="@android:color/white"
+        android:textSize="15sp"
+        android:onClick="onRegresarClick" />
 
 </RelativeLayout>

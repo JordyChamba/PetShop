@@ -60,6 +60,7 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation("com.itextpdf:itextpdf:5.5.13.2")
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.preference)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

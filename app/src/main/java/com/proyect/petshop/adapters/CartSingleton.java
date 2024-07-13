@@ -9,9 +9,11 @@ import java.util.Map;
 public class CartSingleton {
     private static CartSingleton instance;
     private Map<Product, Integer> cartItems; // Usar un mapa para almacenar productos y su cantidad
+    private int cartItemCount; // Contador para la cantidad total de productos en el carrito
 
     private CartSingleton() {
         cartItems = new HashMap<>();
+        cartItemCount = 0;
     }
 
     public static synchronized CartSingleton getInstance() {
@@ -30,6 +32,7 @@ public class CartSingleton {
             // Si es un nuevo producto, agregarlo con cantidad 1
             cartItems.put(product, 1);
         }
+        cartItemCount++; // Incrementar el contador total de productos en el carrito
     }
 
     public void removeFromCart(Product product) {
@@ -42,6 +45,7 @@ public class CartSingleton {
                 // Si solo hay una instancia, eliminar el producto del carrito
                 cartItems.remove(product);
             }
+            cartItemCount--; // Decrementar el contador total de productos en el carrito
         }
     }
 
@@ -59,6 +63,11 @@ public class CartSingleton {
 
     public void clearCart() {
         cartItems.clear();
+        cartItemCount = 0; // Reiniciar el contador total de productos en el carrito
+    }
+
+    public int getCartItemCount() {
+        return cartItemCount;
     }
 
     public double calculateTotal() {

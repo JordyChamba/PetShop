@@ -17,4 +17,18 @@
         android:layout_height="wrap_content"
         android:hint="Cédula"
         android:inputType="number" />
+
+    <EditText
+        android:id="@+id/editTextDireccion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Direccion" />
+
+    <EditText
+        android:id="@+id/editTextTelefono"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Telefono"
+        android:inputType="number" />
+
 </LinearLayout>

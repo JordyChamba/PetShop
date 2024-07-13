@@ -31,7 +31,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:background="@color/papaya_whip"
-        android:text="Recuerda que el buscador nos ayuda a encontrar productos por edad, marca o raza de tu mascota"
+        android:text="Recuerda que el buscador nos ayuda a encontrar productos de manera mucho mas rapida."
         android:textColor="@android:color/black"
         android:textSize="20sp" />
 
@@ -53,17 +53,18 @@
         android:textSize="20sp" />
 
     <!-- RecyclerView para mostrar los productos -->
+
+    <!-- Botón "Compra rápida" al final de la actividad -->
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewProducts"
         android:layout_width="match_parent"
         android:layout_height="571dp"
         android:layout_below="@id/searchView"
-        android:layout_marginTop="-3dp"
+        android:layout_marginTop="24dp"
         android:clipToPadding="false"
         android:padding="15dp"
         android:scrollbars="vertical" />
-
-    <!-- Botón "Compra rápida" al final de la actividad -->
 
     <ImageView
         android:id="@+id/imageViewPrincipal"
@@ -72,6 +73,22 @@
         android:layout_marginStart="175dp"
         android:layout_marginTop="677dp"
         android:background="@drawable/ico_carrito" />
+
+
+    <TextView
+        android:id="@+id/cartItemCount"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignTop="@id/imageViewPrincipal"
+        android:layout_alignEnd="@id/imageViewPrincipal"
+        android:layout_marginTop="-5dp"
+        android:background="@drawable/circle_background"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="@android:color/white"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
     <Button
         android:id="@+id/buttonQuickBuy"
         android:layout_width="120dp"
@@ -83,5 +100,26 @@
         android:textColor="@android:color/white"
         android:text="VER CARRITO"
         android:textSize="15sp" />
+
+    <ImageView
+        android:id="@+id/imageViewRegresar"
+        android:layout_width="38dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="687dp"
+        android:background="@drawable/regresar"
+        android:onClick="onRegresarClick" />
+    <Button
+        android:id="@+id/buttonRegresar"
+        android:layout_width="105dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="#43A047"
+        android:text="Regresar"
+        android:textColor="@android:color/white"
+        android:textSize="15sp"
+        android:onClick="onRegresarClick" />
 
 </RelativeLayout>

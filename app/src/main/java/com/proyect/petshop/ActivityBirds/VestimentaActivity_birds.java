@@ -1,11 +1,16 @@
 package com.proyect.petshop.ActivityBirds;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,6 +31,8 @@ public class VestimentaActivity_birds extends AppCompatActivity implements Produ
 
     private List<Product> filteredProductList;
     private SearchView searchView;
+    private TextView cartItemCountTextView;
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +43,7 @@ public class VestimentaActivity_birds extends AppCompatActivity implements Produ
         recyclerView = findViewById(R.id.recyclerViewProducts);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        cartItemCountTextView = findViewById(R.id.cartItemCount); // Ajusta el ID según tu layout
 
         // Inicializar lista de productos de vestimenta para aves
         productList = new ArrayList<>();
@@ -68,12 +76,6 @@ public class VestimentaActivity_birds extends AppCompatActivity implements Produ
         productList.add(new Product("CAMPANA DE CALCIO", 1.50, R.drawable.ap24, 1));
         productList.add(new Product("COMEDOR PARA AVES EN LIBERTAD", 16.00, R.drawable.ap25, 1));
 
-
-
-
-
-
-
         // Inicializar la lista filtrada
         filteredProductList = new ArrayList<>(productList);
 
@@ -83,7 +85,14 @@ public class VestimentaActivity_birds extends AppCompatActivity implements Produ
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Configurar RecyclerView y adaptador
-        adapter = new ProductAdapter(this, filteredProductList, this);
+        adapter = new ProductAdapter(this, filteredProductList, this, cartItemCountTextView);
+
+        // Inicializar SharedPreferences
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+        // Restaurar el contador global al inicio
+        updateCartItemCount();
+
         recyclerView.setAdapter(adapter);
 
         // Inicializar SearchView
@@ -109,6 +118,23 @@ public class VestimentaActivity_birds extends AppCompatActivity implements Produ
             Intent intent = new Intent(VestimentaActivity_birds.this, CarritoActivity.class);
             startActivity(intent);
         });
+        // Configurar el botón de regreso (ImageView)
+        ImageView imageViewRegresar = findViewById(R.id.imageViewRegresar);
+        imageViewRegresar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish(); // Finaliza la actividad actual
+            }
+        });
+
+        // Configurar el botón de regreso (Button)
+        Button buttonRegresar = findViewById(R.id.buttonRegresar);
+        buttonRegresar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish(); // Finaliza la actividad actual
+            }
+        });
     }
 
     private void filterProducts(String query) {
@@ -129,5 +155,16 @@ public class VestimentaActivity_birds extends AppCompatActivity implements Produ
     @Override
     public void onAddToCartClick(Product product) {
         CartSingleton.getInstance().addToCart(product);
+    }
+    // Método para actualizar el TextView del contador global
+    private void updateCartItemCount() {
+        int total = 0;
+        for (Product product : productList) {
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+            int counter = sharedPreferences.getInt("counter_" + product.getId(), 0);
+            total += counter;
+        }
+        // Actualizar el TextView
+        cartItemCountTextView.setText(String.valueOf(total));
     }
 }

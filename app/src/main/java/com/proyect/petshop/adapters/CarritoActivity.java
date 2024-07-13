@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,6 +51,23 @@ public class CarritoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 showEfectivoDialog();
+            }
+        });
+        // Configurar el botón de regreso (ImageView)
+        ImageView imageViewRegresar = findViewById(R.id.imageViewRegresar);
+        imageViewRegresar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish(); // Finaliza la actividad actual
+            }
+        });
+
+        // Configurar el botón de regreso (Button)
+        Button buttonRegresar = findViewById(R.id.buttonRegresar);
+        buttonRegresar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish(); // Finaliza la actividad actual
             }
         });
 
@@ -97,18 +115,24 @@ public class CarritoActivity extends AppCompatActivity {
 
         EditText editTextNombre = dialogView.findViewById(R.id.editTextNombre);
         EditText editTextCedula = dialogView.findViewById(R.id.editTextCedula);
+        EditText editTextDireccion = dialogView.findViewById(R.id.editTextDireccion);
+        EditText editTextTelefono = dialogView.findViewById(R.id.editTextTelefono);
 
         // Set input filters
         editTextNombre.setFilters(new InputFilter[]{new InputFilter.LengthFilter(50)});
         editTextCedula.setFilters(new InputFilter[]{new InputFilter.LengthFilter(10)});
+        editTextDireccion.setFilters(new InputFilter[]{new InputFilter.LengthFilter(50)});
+        editTextTelefono.setFilters(new InputFilter[]{new InputFilter.LengthFilter(10)});
 
         // Add Text Watchers
-        addTextWatchers(editTextNombre, editTextCedula, null, null);
+        addTextWatchers(editTextNombre, editTextCedula,  editTextDireccion,editTextTelefono,null, null);
 
         dialogBuilder.setTitle("Pago en Efectivo")
                 .setPositiveButton("Aceptar", (dialog, which) -> {
                     String nombre = editTextNombre.getText().toString();
                     String cedula = editTextCedula.getText().toString();
+                    String telefono = editTextTelefono.getText().toString();
+                    String direccion = editTextDireccion.getText().toString();
 
                     if (!isValidName(nombre)) {
                         Toast.makeText(CarritoActivity.this, "Nombre inválido. Solo letras permitidas.", Toast.LENGTH_SHORT).show();
@@ -118,9 +142,17 @@ public class CarritoActivity extends AppCompatActivity {
                         Toast.makeText(CarritoActivity.this, "Cédula inválida. Solo números permitidos, máximo 10 dígitos.", Toast.LENGTH_SHORT).show();
                         return;
                     }
+                    if (!isValidCedula(telefono)) {
+                        Toast.makeText(CarritoActivity.this, "Telefono inválida. Solo números permitidos, máximo 10 dígitos.", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    if (!isValidName(direccion)) {
+                        Toast.makeText(CarritoActivity.this, "Direccion inválido. Solo letras permitidas.", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
 
                     // Aquí puedes agregar la lógica para procesar el pago en efectivo
-                    openPDFActivity(nombre, cedula, "Efectivo");
+                    openPDFActivity(nombre, cedula, telefono, direccion, null, null);
                 })
                 .setNegativeButton("Cancelar", (dialog, which) -> dialog.dismiss());
 
@@ -139,15 +171,19 @@ public class CarritoActivity extends AppCompatActivity {
         EditText editTextCedula = dialogView.findViewById(R.id.editTextCedula);
         EditText editTextBanco = dialogView.findViewById(R.id.editTextBanco);
         EditText editTextNumeroTarjeta = dialogView.findViewById(R.id.editTextNumeroTarjeta);
+        EditText editTextDireccion = dialogView.findViewById(R.id.editTextDireccion);
+        EditText editTextTelefono = dialogView.findViewById(R.id.editTextTelefono);
 
         // Set input filters
         editTextNombre.setFilters(new InputFilter[]{new InputFilter.LengthFilter(50)});
         editTextCedula.setFilters(new InputFilter[]{new InputFilter.LengthFilter(10)});
         editTextBanco.setFilters(new InputFilter[]{new InputFilter.LengthFilter(50)});
         editTextNumeroTarjeta.setFilters(new InputFilter[]{new InputFilter.LengthFilter(10)});
+        editTextDireccion.setFilters(new InputFilter[]{new InputFilter.LengthFilter(50)});
+        editTextTelefono.setFilters(new InputFilter[]{new InputFilter.LengthFilter(10)});
 
         // Add Text Watchers
-        addTextWatchers(editTextNombre, editTextCedula, editTextBanco, editTextNumeroTarjeta);
+        addTextWatchers(editTextNombre, editTextCedula, editTextBanco, editTextNumeroTarjeta,editTextDireccion, editTextTelefono);
 
         dialogBuilder.setTitle("Pago con Tarjeta")
                 .setPositiveButton("Aceptar", (dialog, which) -> {
@@ -155,6 +191,8 @@ public class CarritoActivity extends AppCompatActivity {
                     String cedula = editTextCedula.getText().toString();
                     String banco = editTextBanco.getText().toString();
                     String numeroTarjeta = editTextNumeroTarjeta.getText().toString();
+                    String telefono = editTextTelefono.getText().toString();
+                    String direccion = editTextDireccion.getText().toString();
 
                     if (!isValidName(nombre)) {
                         Toast.makeText(CarritoActivity.this, "Nombre inválido. Solo letras permitidas.", Toast.LENGTH_SHORT).show();
@@ -172,9 +210,17 @@ public class CarritoActivity extends AppCompatActivity {
                         Toast.makeText(CarritoActivity.this, "Número de tarjeta inválido. Solo números permitidos, 10 dígitos.", Toast.LENGTH_SHORT).show();
                         return;
                     }
+                    if (!isValidCedula(telefono)) {
+                        Toast.makeText(CarritoActivity.this, "Telefono inválida. Solo números permitidos, máximo 10 dígitos.", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    if (!isValidName(direccion)) {
+                        Toast.makeText(CarritoActivity.this, "Direccion inválido. Solo letras permitidas.", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
 
                     // Aquí puedes agregar la lógica para procesar el pago con tarjeta
-                    openPDFActivity(nombre, cedula, "Tarjeta");
+                    openPDFActivity(nombre, cedula, direccion, telefono, banco,numeroTarjeta);
                 })
                 .setNegativeButton("Cancelar", (dialog, which) -> dialog.dismiss());
 
@@ -183,7 +229,8 @@ public class CarritoActivity extends AppCompatActivity {
     }
 
 
-    private void addTextWatchers(EditText editTextNombre, EditText editTextCedula, EditText editTextBanco, EditText editTextNumeroTarjeta) {
+    private void addTextWatchers(EditText editTextNombre, EditText editTextCedula, EditText editTextBanco, EditText editTextNumeroTarjeta,
+    EditText editTextDireccion, EditText editTextTelefono) {
         if (editTextNombre != null) {
             editTextNombre.addTextChangedListener(new TextWatcher() {
                 @Override
@@ -259,18 +306,59 @@ public class CarritoActivity extends AppCompatActivity {
                 }
             });
         }
+
+        if (editTextDireccion != null) {
+            editTextDireccion.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    if (!isValidName(s.toString())) {
+                        editTextDireccion.setError("Direccion inválido. Solo letras permitidas.");
+                    }
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                }
+            });
+        }
+
+        if (editTextTelefono != null) {
+            editTextTelefono.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    if (!isValidCedula(s.toString())) {
+                        editTextTelefono.setError("Telefono inválida. Solo números permitidos, máximo 10 dígitos.");
+                    }
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                }
+            });
+        }
     }
 
 // Método para abrir la actividad de PDF
-public void openPDFActivity(String clienteNombre, String clienteCedula, String pagoTipoSeleccionado) {
+public void openPDFActivity(String clienteNombre, String clienteCedula, String clienteTelefono, String clienteDireccion,
+                            String clienteBanco, String clienteNumeroBanco) {
     Intent intent = new Intent(this, PDFActivity.class);
     intent.putExtra("CLIENTE_NOMBRE", clienteNombre); // Quita el ":" después de CLIENTE_NOMBRE
     intent.putExtra("CLIENTE_CEDULA", clienteCedula); // Quita el ":" después de CLIENTE_CEDULA
-    intent.putExtra("PAGO_TIPO", pagoTipoSeleccionado);
+    intent.putExtra("CLIENTE_DIRECCION", clienteDireccion); // Quita el ":" después de CLIENTE_NOMBRE
+    intent.putExtra("CLIENTE_TELEFONO", clienteTelefono); // Quita el ":" después de CLIENTE_CEDULA
+    intent.putExtra("CLIENTE_BANCO", clienteBanco); // Quita el ":" después de CLIENTE_NOMBRE
+    intent.putExtra("CLIENTE_NUMERO_BANCO", clienteNumeroBanco); // Quita el ":" después de CLIENTE_CEDULA
 
     startActivity(intent);
 }
-
 
     // Método para manejar la eliminación del producto
     public void onDeleteButtonClick(Product product) {

@@ -4,9 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.proyect.petshop.R;
 import com.proyect.petshop.adapters.CarritoActivity;
 import com.proyect.petshop.models.InstruccionesActivity;
@@ -19,60 +19,74 @@ public class BirdActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aves);
 
+        // Botones y sus correspondientes ImageView
         Button buttonAlimentos = findViewById(R.id.buttonAlimentos);
         Button buttonZonaJuegos = findViewById(R.id.buttonZonaJuegos);
         Button buttonVestimenta = findViewById(R.id.buttonVestimenta);
         Button buttonInstrucciones = findViewById(R.id.buttonInstrucciones);
         Button buttonCarrito = findViewById(R.id.buttonCarrito);
-        Button buttonHome = findViewById(R.id.buttonHome);
+        View imageViewAlimentacion = findViewById(R.id.imageViewAlimentacion);
+        View imageViewJuegos = findViewById(R.id.imageViewJuegos);
+        View imageViewVestimenta = findViewById(R.id.imageViewVestimenta);
+        View imageViewBook = findViewById(R.id.imageViewBook);
 
-        buttonAlimentos.setOnClickListener(new View.OnClickListener() {
+        // Listener para Alimentos
+        View.OnClickListener alimentosClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(BirdActivity.this, AlimentosActivity_birds.class);
                 startActivity(intent);
             }
-        });
+        };
+        buttonAlimentos.setOnClickListener(alimentosClickListener);
+        imageViewAlimentacion.setOnClickListener(alimentosClickListener);
 
-        buttonZonaJuegos.setOnClickListener(new View.OnClickListener() {
+        // Listener para Zona de Juegos
+        View.OnClickListener juegosClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(BirdActivity.this, ZonaJuegosActivity_birds.class);
                 startActivity(intent);
             }
-        });
+        };
+        buttonZonaJuegos.setOnClickListener(juegosClickListener);
+        imageViewJuegos.setOnClickListener(juegosClickListener);
 
-        buttonVestimenta.setOnClickListener(new View.OnClickListener() {
+        // Listener para Vestimenta
+        View.OnClickListener vestimentaClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(BirdActivity.this, VestimentaActivity_birds.class);
                 startActivity(intent);
             }
-        });
+        };
+        buttonVestimenta.setOnClickListener(vestimentaClickListener);
+        imageViewVestimenta.setOnClickListener(vestimentaClickListener);
 
-        buttonInstrucciones.setOnClickListener(new View.OnClickListener() {
+        // Listener para Instrucciones
+        View.OnClickListener instruccionesClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(BirdActivity.this, InstruccionesActivity.class);
                 startActivity(intent);
             }
-        });
+        };
+        buttonInstrucciones.setOnClickListener(instruccionesClickListener);
+        imageViewBook.setOnClickListener(instruccionesClickListener);
 
-        buttonCarrito.setOnClickListener(new View.OnClickListener() {
+        // Listener para la imagen de regresar
+        ImageView imageViewRegresar = findViewById(R.id.imageViewRegresar);
+        imageViewRegresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(BirdActivity.this, CarritoActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        buttonHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(BirdActivity.this, MainActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Limpiar todas las actividades en la parte superior de MainActivity
-                startActivity(intent);
+                finish(); // Finalizar esta actividad y regresar a la anterior en el stack
             }
         });
     }
+
+    // Método para manejar el clic del botón de regresar
+    public void onRegresarClick(View view) {
+        finish(); // Finalizar esta actividad y regresar a la anterior en el stack
+    }
+
 }

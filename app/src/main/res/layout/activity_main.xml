@@ -23,7 +23,6 @@
         android:layout_marginEnd="130dp"
         android:background="@drawable/ico_dog"
         android:contentDescription="Perro" />
-
     <Button
         android:id="@+id/buttonCanino"
         android:layout_width="105dp"

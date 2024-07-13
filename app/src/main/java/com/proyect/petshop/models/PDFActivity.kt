@@ -10,6 +10,7 @@ import android.os.Environment
 import android.view.Gravity
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TableLayout
 import android.widget.TableRow
 import android.widget.TextView
@@ -22,6 +23,7 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 
+
 class PDFActivity : AppCompatActivity() {
     private lateinit var textViewTotal: TextView
     private lateinit var tableLayout: TableLayout
@@ -30,7 +32,10 @@ class PDFActivity : AppCompatActivity() {
 
     private var clienteNombre: String? = null
     private var clienteCedula: String? = null
-    private var pagoTipo: String? = null
+    private var clienteDireccion: String? = null
+    private var clienteTelefono: String? = null
+    private var clienteBanco: String? = null
+    private var clienteNumeroBanco: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,13 +58,29 @@ class PDFActivity : AppCompatActivity() {
             generatePDF(products, totalPrice)
         }
 
+        // Configurar el ImageView de regresar
+        findViewById<ImageView>(R.id.imageViewRegresar).setOnClickListener {
+            finish() // Finaliza la actividad actual
+        }
+        // Configurar el Button de regresar
+        findViewById<Button>(R.id.buttonRegresar).setOnClickListener {
+            finish() // Finaliza la actividad actual
+        }
+
+
         clienteNombre = intent.getStringExtra("CLIENTE_NOMBRE") ?: "No especificado"
         clienteCedula = intent.getStringExtra("CLIENTE_CEDULA") ?: "No especificado"
-        pagoTipo = intent.getStringExtra("PAGO_TIPO") ?: "No especificado"
+        clienteDireccion = intent.getStringExtra("CLIENTE_DIRECCION") ?: "No especificado"
+        clienteTelefono = intent.getStringExtra("CLIENTE_TELEFONO") ?: "No especificado"
+        clienteBanco = intent.getStringExtra("CLIENTE_BANCO") ?: "----"
+        clienteNumeroBanco = intent.getStringExtra("CLIENTE_NUMERO_BANCO") ?: "----"
 
         findViewById<TextView>(R.id.textViewClienteNombre).text = clienteNombre
         findViewById<TextView>(R.id.textViewClienteCedula).text = clienteCedula
-        findViewById<TextView>(R.id.textViewPagoTipo).text = pagoTipo
+        findViewById<TextView>(R.id.textViewClienteDireccion).text = clienteDireccion
+        findViewById<TextView>(R.id.textViewClienteTelefono).text = clienteTelefono
+        findViewById<TextView>(R.id.textViewClienteBanco).text = clienteBanco
+        findViewById<TextView>(R.id.textViewClienteNumeroBanco).text = clienteNumeroBanco
 
     }
 
@@ -222,7 +243,7 @@ class PDFActivity : AppCompatActivity() {
 
         // Tipo de pago
         yPosition += 20
-        canvas?.drawText("Tipo de Pago: $pagoTipo", 50f, yPosition, paint)
+        canvas?.drawText("Tipo de Pago: $clienteDireccion", 50f, yPosition, paint)
 
         // Separador
         yPosition += 20
@@ -279,7 +300,7 @@ class PDFActivity : AppCompatActivity() {
                 yPosition += 20
                 canvas?.drawText("Cédula: $clienteCedula", 50f, yPosition, paint)
                 yPosition += 20
-                canvas?.drawText("Tipo de Pago: $pagoTipo", 50f, yPosition, paint)
+                canvas?.drawText("Tipo de Pago: $clienteDireccion", 50f, yPosition, paint)
                 yPosition += 20
                 canvas?.drawLine(50f, yPosition, 550f, yPosition, paint)
                 yPosition += 30

@@ -2,8 +2,11 @@ package com.proyect.petshop.ActivityCats;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,7 +33,7 @@ public class VestimentaActivity_cats extends AppCompatActivity implements Produc
     private List<Product> filteredProductList;
     private SearchView searchView;
 
-
+    private TextView cartItemCountTextView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +43,7 @@ public class VestimentaActivity_cats extends AppCompatActivity implements Produc
         recyclerView = findViewById(R.id.recyclerViewProducts);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        cartItemCountTextView = findViewById(R.id.cartItemCount); // Ajusta el ID según tu layout
 
         // Inicializar lista de productos de vestimenta para gatos
         productList = new ArrayList<>();
@@ -65,7 +69,7 @@ public class VestimentaActivity_cats extends AppCompatActivity implements Produc
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Configurar RecyclerView y adaptador
-        adapter = new ProductAdapter(this, filteredProductList, this);
+        adapter = new ProductAdapter(this, filteredProductList, this, cartItemCountTextView);
         recyclerView.setAdapter(adapter);
 
         // Inicializar SearchView
@@ -90,6 +94,23 @@ public class VestimentaActivity_cats extends AppCompatActivity implements Produc
             // Navegar hacia CarritoActivity
             Intent intent = new Intent(VestimentaActivity_cats.this, CarritoActivity.class);
             startActivity(intent);
+        });
+        // Configurar el botón de regreso (ImageView)
+        ImageView imageViewRegresar = findViewById(R.id.imageViewRegresar);
+        imageViewRegresar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish(); // Finaliza la actividad actual
+            }
+        });
+
+        // Configurar el botón de regreso (Button)
+        Button buttonRegresar = findViewById(R.id.buttonRegresar);
+        buttonRegresar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish(); // Finaliza la actividad actual
+            }
         });
     }
 

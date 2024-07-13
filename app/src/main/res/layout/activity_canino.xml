@@ -11,7 +11,7 @@
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:alpha="0.7"
+        android:alpha="0.3"
         android:scaleType="centerCrop"
         android:src="@drawable/dog" />
 
@@ -74,26 +74,26 @@
         android:textColor="@android:color/white"
         android:textSize="15sp" />
 
-    <!-- Botón " Home y su imagen " -->
     <ImageView
-        android:id="@+id/imageViewPrincipal"
+        android:id="@+id/imageViewRegresar"
         android:layout_width="38dp"
         android:layout_height="35dp"
-        android:layout_below="@id/buttonAlimentos"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="448dp"
-        android:background="@drawable/ico_home" />
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="657dp"
+        android:background="@drawable/regresar"
+        android:onClick="onRegresarClick" />
     <Button
-        android:id="@+id/buttonHome"
-        android:layout_width="100dp"
+        android:id="@+id/buttonRegresar"
+        android:layout_width="105dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="32dp"
-        android:layout_marginBottom="41dp"
-        android:backgroundTint="@color/red"
-        android:text="Home"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="40dp"
+        android:backgroundTint="#43A047"
+        android:text="Regresar"
         android:textColor="@android:color/white"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        android:onClick="onRegresarClick" />
 
     <!-- Botón " Carrito y su imagen " -->
     <ImageView

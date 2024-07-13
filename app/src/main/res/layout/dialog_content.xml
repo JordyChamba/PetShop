@@ -3,26 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="20dp">
+    android:padding="20dp"
+    android:gravity="center">
 
-    <TextView
-        android:id="@+id/dialogTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="¡Bienvenido a nuestro PetShop!"
-        android:textColor="@android:color/black"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/dialogMessage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Aquí puedes encontrar todo lo que necesitas para tu mascota. No te olvides que puedes irte al Botón Readme para conocer las instrucciones de la aplicación."
-        android:textColor="@android:color/black"
-        android:textSize="20sp" />
-
+    <ImageView
+        android:id="@+id/dialogImage"
+        android:layout_width="wrap_content"
+        android:layout_height="402dp"
+        android:contentDescription="Descripción de la imagen"
+        android:src="@drawable/emer" />
 
 </LinearLayout>
