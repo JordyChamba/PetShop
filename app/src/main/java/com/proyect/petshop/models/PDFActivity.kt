@@ -211,13 +211,26 @@ class PDFActivity : AppCompatActivity() {
         var canvas: Canvas? = null
         val paint = Paint()
 
-
         // Load the logo
-        val logoBitmap = BitmapFactory.decodeResource(resources, R.drawable.pdflogo)
-        val scaledLogo = Bitmap.createScaledBitmap(logoBitmap, pageInfo.pageWidth.toInt(), pageInfo.pageHeight.toInt(), true)
+        val logoBitmap = BitmapFactory.decodeResource(resources, R.drawable.logover)
+
+        // Define the desired width and height for the scaled logo
+        val desiredWidth = pageInfo.pageWidth.toInt() /5 // Adjust as needed
+        val desiredHeight = pageInfo.pageHeight.toInt() / 7 // Adjust as needed
+
+        // Scale the logo to the desired size
+        val scaledLogo = Bitmap.createScaledBitmap(logoBitmap, desiredWidth, desiredHeight, true)
+
+        // Coordinates to position the image at the top-left corner
+        val topRightX = pageInfo.pageWidth - scaledLogo.width.toFloat()
+        val topLeftY = 0f
+
         val logoPaint = Paint().apply {
             alpha = 30 // Opacity of the logo (0-255, where 0 is completely transparent and 255 is completely opaque)
         }
+
+// Draw the scaled logo at the top-left corner of the page
+        canvas?.drawBitmap(scaledLogo, topRightX, topLeftY, logoPaint)
 
 
         // Coordenadas iniciales para el contenido

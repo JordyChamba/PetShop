@@ -25,14 +25,14 @@
         android:background="@drawable/dogcoo" />
     <Button
         android:id="@+id/buttonAlimentos"
-        android:layout_width="115dp"
+        android:layout_width="125dp"
         android:layout_height="50dp"
         android:layout_marginStart="150dp"
         android:layout_marginTop="160dp"
-        android:backgroundTint="@color/chocolate"
+        android:background="#E8D68A"
         android:text="Alimentos"
-        android:textColor="@android:color/white"
-        android:textSize="16sp" />
+        android:textColor="@color/primary_text_color"
+        android:textSize="19sp" />
 
     <ImageView
         android:id="@+id/imageViewJuegos"
@@ -49,10 +49,10 @@
         android:layout_below="@id/buttonAlimentos"
         android:layout_marginStart="150dp"
         android:layout_marginTop="160dp"
-        android:backgroundTint="@color/purple_500"
+        android:background="#E8D68A"
         android:text="Juegos"
-        android:textColor="@android:color/white"
-        android:textSize="16sp" />
+        android:textColor="@color/primary_text_color"
+        android:textSize="19sp" />
 
     <ImageView
         android:id="@+id/imageViewVestimenta"
@@ -69,10 +69,10 @@
         android:layout_below="@id/buttonZonaJuegos"
         android:layout_marginStart="150dp"
         android:layout_marginTop="157dp"
-        android:backgroundTint="@color/black"
+        android:background="#E8D68A"
         android:text="Vestimenta"
-        android:textColor="@android:color/white"
-        android:textSize="16sp" />
+        android:textColor="@color/primary_text_color"
+        android:textSize="19sp" />
 
     <ImageView
         android:id="@+id/imageViewRegresar"

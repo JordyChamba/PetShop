@@ -8,9 +8,8 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.proyect.petshop.R;
-import com.proyect.petshop.adapters.CarritoActivity;
+import com.proyect.petshop.activityDogs.CaninoActivity;
 import com.proyect.petshop.models.InstruccionesActivity;
-import com.proyect.petshop.views.MainActivity;
 
 public class BirdActivity extends AppCompatActivity {
 

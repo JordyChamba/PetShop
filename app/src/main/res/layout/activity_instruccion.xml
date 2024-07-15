@@ -1,8 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?>
+<!-- activity_instrucciones.xml -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activityDogs.CaninoActivity">
+    android:layout_height="match_parent">
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- ImageView para regresar -->
+    <ImageView
+        android:id="@+id/imageViewRegresar"
+        android:layout_width="38dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="657dp"
+    android:background="@drawable/regresar"
+    android:onClick="onRegresarClick" />
+
+    <!-- Botón para regresar -->
+    <Button
+        android:id="@+id/buttonRegresar"
+        android:layout_width="105dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="40dp"
+        android:backgroundTint="#43A047"
+        android:text="Regresar"
+        android:textColor="@android:color/white"
+        android:textSize="15sp"
+        android:onClick="onRegresarClick" />
 
 </RelativeLayout>

@@ -30,9 +30,9 @@
         android:layout_below="@id/imageViewPerro"
         android:layout_marginStart="150dp"
         android:layout_marginTop="-5dp"
-        android:backgroundTint="@color/red"
+        android:backgroundTint="@color/primary_text_color"
         android:text="Perro"
-        android:textColor="@android:color/white"
+        android:textColor="#FFFFFF"
         android:textSize="25sp" />
 
     <!-- Botón "Instrucciones" -->
@@ -55,7 +55,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="-17dp"
         android:layout_marginEnd="258dp"
-        android:backgroundTint="@color/colorPrimaryDark"
+        android:backgroundTint="@color/primary_text_color"
         android:text="Gato"
         android:textColor="@android:color/white"
         android:textSize="25sp" />
@@ -80,7 +80,7 @@
         android:layout_below="@id/imageViewAves"
         android:layout_marginStart="265dp"
         android:layout_marginTop="-10dp"
-        android:backgroundTint="@color/chocolate"
+        android:backgroundTint="@color/primary_text_color"
         android:text="Aves"
         android:textColor="@android:color/white"
         android:textSize="25sp" />
@@ -165,7 +165,7 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#99900000"
+                android:background="#E8D68A"
                 android:padding="10dp"
                 android:layout_gravity="center">
 
@@ -176,7 +176,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="¡Bienvenido a PetShop!"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/primary_text_color"
                     android:textSize="30sp"
                     android:textStyle="bold" />
 

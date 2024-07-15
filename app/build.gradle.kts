@@ -61,6 +61,7 @@ dependencies {
     implementation("com.itextpdf:itextpdf:5.5.13.2")
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.preference)
+    implementation(libs.androidx.viewpager2)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

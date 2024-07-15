@@ -3,6 +3,7 @@ package com.proyect.petshop.views
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
@@ -11,8 +12,8 @@ import com.proyect.petshop.R
 import com.proyect.petshop.activityDogs.CaninoActivity
 import com.proyect.petshop.ActivityCats.FelinoActivity
 import com.proyect.petshop.ActivityBirds.BirdActivity
-import com.proyect.petshop.models.InstruccionesActivity
 import com.proyect.petshop.adapters.CarritoActivity
+import com.proyect.petshop.models.InstruccionesActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,13 +62,13 @@ class MainActivity : AppCompatActivity() {
         imageViewAves.setOnClickListener { avesClickListener() }
 
         // Set click listeners for Instrucciones
-        val instruccionesClickListener = {
-            Log.d("MainActivity", "Instrucciones clicked")
+        // Listener para Instrucciones
+        val instruccionesClickListener = View.OnClickListener {
             val intent = Intent(this, InstruccionesActivity::class.java)
             startActivity(intent)
         }
-        buttonInstrucciones.setOnClickListener { instruccionesClickListener() }
-        imageViewBook.setOnClickListener { instruccionesClickListener() }
+        buttonInstrucciones.setOnClickListener(instruccionesClickListener)
+        imageViewBook.setOnClickListener(instruccionesClickListener)
 
         // Set click listeners for Carrito
         val carritoClickListener = {
