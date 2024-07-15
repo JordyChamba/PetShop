@@ -31,7 +31,7 @@
         android:backgroundTint="@color/purple_200"
         android:text="Alimentos"
         android:textColor="@android:color/white"
-        android:textSize="15sp" />
+        android:textSize="16sp" />
 
     <!-- Botón "Zona de Juegos" -->
     <ImageView
@@ -52,7 +52,7 @@
         android:backgroundTint="@color/chocolate"
         android:text="Juegos"
         android:textColor="@android:color/white"
-        android:textSize="15sp" />
+        android:textSize="16sp" />
 
     <!-- Botón "Vestimenta" -->
     <ImageView
@@ -73,7 +73,7 @@
         android:backgroundTint="@color/teal_700"
         android:text="Vestimenta"
         android:textColor="@android:color/white"
-        android:textSize="15sp" />
+        android:textSize="16sp" />
 
     <ImageView
         android:id="@+id/imageViewRegresar"

@@ -9,6 +9,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -117,6 +118,8 @@ public class CarritoActivity extends AppCompatActivity {
         EditText editTextCedula = dialogView.findViewById(R.id.editTextCedula);
         EditText editTextDireccion = dialogView.findViewById(R.id.editTextDireccion);
         EditText editTextTelefono = dialogView.findViewById(R.id.editTextTelefono);
+        CheckBox checkboxTerms = dialogView.findViewById(R.id.checkbox_terms);
+        CheckBox checkboxPrivacy = dialogView.findViewById(R.id.checkbox_privacy);
 
         // Set input filters
         editTextNombre.setFilters(new InputFilter[]{new InputFilter.LengthFilter(50)});
@@ -125,40 +128,57 @@ public class CarritoActivity extends AppCompatActivity {
         editTextTelefono.setFilters(new InputFilter[]{new InputFilter.LengthFilter(10)});
 
         // Add Text Watchers
-        addTextWatchers(editTextNombre, editTextCedula,  editTextDireccion,editTextTelefono,null, null);
+        addTextWatchers(editTextNombre, editTextCedula, editTextDireccion, editTextTelefono, null, null);
 
         dialogBuilder.setTitle("Pago en Efectivo")
-                .setPositiveButton("Aceptar", (dialog, which) -> {
-                    String nombre = editTextNombre.getText().toString();
-                    String cedula = editTextCedula.getText().toString();
-                    String telefono = editTextTelefono.getText().toString();
-                    String direccion = editTextDireccion.getText().toString();
-
-                    if (!isValidName(nombre)) {
-                        Toast.makeText(CarritoActivity.this, "Nombre inválido. Solo letras permitidas.", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-                    if (!isValidCedula(cedula)) {
-                        Toast.makeText(CarritoActivity.this, "Cédula inválida. Solo números permitidos, máximo 10 dígitos.", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-                    if (!isValidCedula(telefono)) {
-                        Toast.makeText(CarritoActivity.this, "Telefono inválida. Solo números permitidos, máximo 10 dígitos.", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-                    if (!isValidName(direccion)) {
-                        Toast.makeText(CarritoActivity.this, "Direccion inválido. Solo letras permitidas.", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-
-                    // Aquí puedes agregar la lógica para procesar el pago en efectivo
-                    openPDFActivity(nombre, cedula, telefono, direccion, null, null);
-                })
+                .setPositiveButton("Aceptar", null)
                 .setNegativeButton("Cancelar", (dialog, which) -> dialog.dismiss());
 
         AlertDialog alertDialog = dialogBuilder.create();
+        alertDialog.setOnShowListener(dialog -> {
+            Button buttonAceptar = alertDialog.getButton(AlertDialog.BUTTON_POSITIVE);
+            buttonAceptar.setEnabled(false);
+
+            checkboxTerms.setOnCheckedChangeListener((buttonView, isChecked) ->
+                    buttonAceptar.setEnabled(checkboxTerms.isChecked() && checkboxPrivacy.isChecked())
+            );
+
+            checkboxPrivacy.setOnCheckedChangeListener((buttonView, isChecked) ->
+                    buttonAceptar.setEnabled(checkboxTerms.isChecked() && checkboxPrivacy.isChecked())
+            );
+
+            buttonAceptar.setOnClickListener(v -> {
+                String nombre = editTextNombre.getText().toString();
+                String cedula = editTextCedula.getText().toString();
+                String telefono = editTextTelefono.getText().toString();
+                String direccion = editTextDireccion.getText().toString();
+
+                if (!isValidName(nombre)) {
+                    Toast.makeText(CarritoActivity.this, "Nombre inválido. Solo letras permitidas.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (!isValidCedula(cedula)) {
+                    Toast.makeText(CarritoActivity.this, "Cédula inválida. Solo números permitidos, máximo 10 dígitos.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (!isValidCedula(telefono)) {
+                    Toast.makeText(CarritoActivity.this, "Teléfono inválido. Solo números permitidos, máximo 10 dígitos.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (!isValidName(direccion)) {
+                    Toast.makeText(CarritoActivity.this, "Dirección inválida. Solo letras permitidas.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Aquí puedes agregar la lógica para procesar el pago en efectivo
+                openPDFActivity(nombre, cedula, telefono, direccion, null, null);
+                alertDialog.dismiss();
+            });
+        });
+
         alertDialog.show();
     }
+
 
     private void showTarjetaDialog() {
         LayoutInflater inflater = getLayoutInflater();
@@ -173,6 +193,8 @@ public class CarritoActivity extends AppCompatActivity {
         EditText editTextNumeroTarjeta = dialogView.findViewById(R.id.editTextNumeroTarjeta);
         EditText editTextDireccion = dialogView.findViewById(R.id.editTextDireccion);
         EditText editTextTelefono = dialogView.findViewById(R.id.editTextTelefono);
+        CheckBox checkBoxAceptoPoliticas = dialogView.findViewById(R.id.checkBoxAceptoPoliticas);
+        CheckBox checkBoxAceptoTerminos = dialogView.findViewById(R.id.checkBoxAceptoTerminos);
 
         // Set input filters
         editTextNombre.setFilters(new InputFilter[]{new InputFilter.LengthFilter(50)});
@@ -183,50 +205,67 @@ public class CarritoActivity extends AppCompatActivity {
         editTextTelefono.setFilters(new InputFilter[]{new InputFilter.LengthFilter(10)});
 
         // Add Text Watchers
-        addTextWatchers(editTextNombre, editTextCedula, editTextBanco, editTextNumeroTarjeta,editTextDireccion, editTextTelefono);
+        addTextWatchers(editTextNombre, editTextCedula, editTextBanco, editTextNumeroTarjeta, editTextDireccion, editTextTelefono);
 
         dialogBuilder.setTitle("Pago con Tarjeta")
-                .setPositiveButton("Aceptar", (dialog, which) -> {
-                    String nombre = editTextNombre.getText().toString();
-                    String cedula = editTextCedula.getText().toString();
-                    String banco = editTextBanco.getText().toString();
-                    String numeroTarjeta = editTextNumeroTarjeta.getText().toString();
-                    String telefono = editTextTelefono.getText().toString();
-                    String direccion = editTextDireccion.getText().toString();
-
-                    if (!isValidName(nombre)) {
-                        Toast.makeText(CarritoActivity.this, "Nombre inválido. Solo letras permitidas.", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-                    if (!isValidCedula(cedula)) {
-                        Toast.makeText(CarritoActivity.this, "Cédula inválida. Solo números permitidos, máximo 10 dígitos.", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-                    if (!isValidBankName(banco)) {
-                        Toast.makeText(CarritoActivity.this, "Nombre del banco inválido. Solo letras permitidas.", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-                    if (!isValidCardNumber(numeroTarjeta)) {
-                        Toast.makeText(CarritoActivity.this, "Número de tarjeta inválido. Solo números permitidos, 10 dígitos.", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-                    if (!isValidCedula(telefono)) {
-                        Toast.makeText(CarritoActivity.this, "Telefono inválida. Solo números permitidos, máximo 10 dígitos.", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-                    if (!isValidName(direccion)) {
-                        Toast.makeText(CarritoActivity.this, "Direccion inválido. Solo letras permitidas.", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-
-                    // Aquí puedes agregar la lógica para procesar el pago con tarjeta
-                    openPDFActivity(nombre, cedula, direccion, telefono, banco,numeroTarjeta);
-                })
+                .setPositiveButton("Aceptar", null) // Setting null to override later
                 .setNegativeButton("Cancelar", (dialog, which) -> dialog.dismiss());
 
         AlertDialog alertDialog = dialogBuilder.create();
+        alertDialog.setOnShowListener(dialog -> {
+            Button acceptButton = alertDialog.getButton(AlertDialog.BUTTON_POSITIVE);
+            acceptButton.setOnClickListener(v -> {
+                String nombre = editTextNombre.getText().toString();
+                String cedula = editTextCedula.getText().toString();
+                String banco = editTextBanco.getText().toString();
+                String numeroTarjeta = editTextNumeroTarjeta.getText().toString();
+                String telefono = editTextTelefono.getText().toString();
+                String direccion = editTextDireccion.getText().toString();
+
+                if (!isValidName(nombre)) {
+                    Toast.makeText(CarritoActivity.this, "Nombre inválido. Solo letras permitidas.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (!isValidCedula(cedula)) {
+                    Toast.makeText(CarritoActivity.this, "Cédula inválida. Solo números permitidos, máximo 10 dígitos.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (!isValidBankName(banco)) {
+                    Toast.makeText(CarritoActivity.this, "Nombre del banco inválido. Solo letras permitidas.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (!isValidCardNumber(numeroTarjeta)) {
+                    Toast.makeText(CarritoActivity.this, "Número de tarjeta inválido. Solo números permitidos, 10 dígitos.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (!isValidCedula(telefono)) {
+                    Toast.makeText(CarritoActivity.this, "Telefono inválido. Solo números permitidos, máximo 10 dígitos.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (!isValidName(direccion)) {
+                    Toast.makeText(CarritoActivity.this, "Direccion inválida. Solo letras permitidas.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (!checkBoxAceptoPoliticas.isChecked()) {
+                    Toast.makeText(CarritoActivity.this, "Debes aceptar las políticas de privacidad.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (!checkBoxAceptoTerminos.isChecked()) {
+                    Toast.makeText(CarritoActivity.this, "Debes aceptar los términos y condiciones.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Aquí puedes agregar la lógica para procesar el pago con tarjeta
+                openPDFActivity(nombre, cedula, direccion, telefono, banco, numeroTarjeta);
+                alertDialog.dismiss();
+            });
+        });
+
         alertDialog.show();
     }
+
 
 
     private void addTextWatchers(EditText editTextNombre, EditText editTextCedula, EditText editTextBanco, EditText editTextNumeroTarjeta,

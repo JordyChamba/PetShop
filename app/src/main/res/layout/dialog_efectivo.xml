@@ -1,34 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/editTextNombre"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nombre" />
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <EditText
-        android:id="@+id/editTextCedula"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Cédula"
-        android:inputType="number" />
+        <EditText
+            android:id="@+id/editTextNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nombre" />
 
-    <EditText
-        android:id="@+id/editTextDireccion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Direccion" />
+        <EditText
+            android:id="@+id/editTextCedula"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Cédula"
+            android:inputType="number" />
 
-    <EditText
-        android:id="@+id/editTextTelefono"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Telefono"
-        android:inputType="number" />
+        <EditText
+            android:id="@+id/editTextDireccion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Dirección" />
 
-</LinearLayout>
+        <EditText
+            android:id="@+id/editTextTelefono"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Teléfono"
+            android:inputType="number" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Políticas de Privacidad:\nPara PetShop (PatApp) la protección de tus datos personales principalmente para gestionar nuestra relación comercial."
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"/>
+
+        <CheckBox
+            android:id="@+id/checkbox_terms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Acepto los términos y condiciones" />
+
+        <CheckBox
+            android:id="@+id/checkbox_privacy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="He leido y acepto la politica de privacidad" />
+
+    </LinearLayout>
+</ScrollView>

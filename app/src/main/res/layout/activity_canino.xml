@@ -32,7 +32,7 @@
         android:backgroundTint="@color/chocolate"
         android:text="Alimentos"
         android:textColor="@android:color/white"
-        android:textSize="15sp" />
+        android:textSize="16sp" />
 
     <ImageView
         android:id="@+id/imageViewJuegos"
@@ -52,7 +52,7 @@
         android:backgroundTint="@color/purple_500"
         android:text="Juegos"
         android:textColor="@android:color/white"
-        android:textSize="15sp" />
+        android:textSize="16sp" />
 
     <ImageView
         android:id="@+id/imageViewVestimenta"
@@ -72,7 +72,7 @@
         android:backgroundTint="@color/black"
         android:text="Vestimenta"
         android:textColor="@android:color/white"
-        android:textSize="15sp" />
+        android:textSize="16sp" />
 
     <ImageView
         android:id="@+id/imageViewRegresar"
