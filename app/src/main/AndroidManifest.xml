@@ -7,7 +7,6 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
@@ -17,29 +16,42 @@
         <activity
             android:name=".views.MainActivity"
             android:exported="true"
-
             android:theme="@style/Theme.PetShop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="com.google.zxing.client.android.SCAN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
+        <!-- QRScanActivity -->
+        <activity
+            android:name=".QR.QRDisplayActivity"
+            android:theme="@style/AppTheme" />
+
+        <!-- Activities for dogs -->
         <activity android:name=".activityDogs.CaninoActivity" />
-        <activity android:name=".ActivityCats.FelinoActivity" />
-        <activity android:name=".ActivityBirds.BirdActivity" />
-        <activity android:name=".models.InstruccionesActivity" />
         <activity android:name=".activityDogs.AlimentosActivity_dogs" />
         <activity android:name=".activityDogs.ZonaJuegosActivity_dogs" />
         <activity android:name=".activityDogs.VestimentaActivity_dogs" />
+
+        <!-- Activities for cats -->
+        <activity android:name=".ActivityCats.FelinoActivity" />
         <activity android:name=".ActivityCats.AlimentosActivity_cats" />
         <activity android:name=".ActivityCats.ZonaJuegosActivity_cats" />
         <activity android:name=".ActivityCats.VestimentaActivity_cats" />
+
+        <!-- Activities for birds -->
+        <activity android:name=".ActivityBirds.BirdActivity" />
         <activity android:name=".ActivityBirds.AlimentosActivity_birds" />
         <activity android:name=".ActivityBirds.ZonaJuegosActivity_birds" />
         <activity android:name=".ActivityBirds.VestimentaActivity_birds" />
-        <activity android:name=".adapters.CarritoActivity"/>
-        <activity android:name=".models.PDFActivity"/>
+
+        <!-- Other activities -->
+        <activity android:name=".models.InstruccionesActivity" />
+        <activity android:name=".adapters.CarritoActivity" />
+        <activity android:name=".models.PDFActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

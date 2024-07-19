@@ -18,13 +18,22 @@ import android.widget.TableLayout
 import android.widget.TableRow
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
+import com.google.zxing.BarcodeFormat
+import com.google.zxing.EncodeHintType
+import com.google.zxing.WriterException
+import com.google.zxing.common.BitMatrix
+import com.google.zxing.qrcode.QRCodeWriter
+import com.proyect.petshop.QR.QRDisplayActivity
+import com.proyect.petshop.QR.QRScanActivity
 import com.proyect.petshop.R
 import com.proyect.petshop.adapters.CartSingleton
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
+import java.util.EnumMap
 
 
 class PDFActivity : AppCompatActivity() {
@@ -32,6 +41,8 @@ class PDFActivity : AppCompatActivity() {
     private lateinit var tableLayout: TableLayout
     private lateinit var buttonDownload: Button
     private lateinit var pdfFile: File
+    private lateinit var buttonQR: Button
+    private lateinit var imageViewQR: ImageView
 
     private var clienteNombre: String? = null
     private var clienteCedula: String? = null
@@ -40,6 +51,18 @@ class PDFActivity : AppCompatActivity() {
     private var clienteBanco: String? = null
     private var clienteNumeroBanco: String? = null
 
+    private var qrScanLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == RESULT_OK) {
+            val scannedData = result.data?.getStringExtra("SCANNED_DATA")
+            scannedData?.let {
+                Toast.makeText(this, "Datos escaneados: $it", Toast.LENGTH_SHORT).show()
+                val qrSize = resources.getDimensionPixelSize(R.dimen.qr_code_size)
+                imageViewQR.setImageBitmap(generateQRBitmap(it, qrSize))
+            }
+        }
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pdf)
@@ -47,6 +70,7 @@ class PDFActivity : AppCompatActivity() {
         textViewTotal = findViewById(R.id.textViewTotal)
         tableLayout = findViewById(R.id.tableLayoutCart)
         buttonDownload = findViewById(R.id.buttonDownload)
+        buttonQR = findViewById(R.id.verQRButton)
 
         val products = CartSingleton.getInstance().getCartItems()
         val totalPrice = CartSingleton.getInstance().calculateTotal()
@@ -59,6 +83,29 @@ class PDFActivity : AppCompatActivity() {
 
         buttonDownload.setOnClickListener {
             generatePDF(products, totalPrice)
+        }
+
+        // Configurar el OnClickListener para el botón QR
+        buttonQR.setOnClickListener {
+            // Crear un texto que incluya toda la información relevante para el QR
+            val qrText = """
+                Nombre del Cliente: $clienteNombre
+                Cédula: $clienteCedula
+                Total: $$formattedTotal
+            """.trimIndent()
+
+            // Crear un intent para iniciar QRDisplayActivity con el texto del QR
+            val intent = Intent(this, QRDisplayActivity::class.java).apply {
+                putExtra("QR_TEXT", qrText)
+                putExtra("CLIENTE_NOMBRE", clienteNombre)
+                putExtra("CLIENTE_CEDULA", clienteCedula)
+                putExtra("CLIENTE_DIRECCION", clienteDireccion)
+                putExtra("CLIENTE_TELEFONO", clienteTelefono)
+                putExtra("CLIENTE_BANCO", clienteBanco)
+                putExtra("CLIENTE_NUMERO_BANCO", clienteNumeroBanco)
+                putExtra("TOTAL_PRECIO", formattedTotal) // Pasar el precio total como String
+            }
+            startActivity(intent)
         }
 
         // Configurar el ImageView de regresar
@@ -85,6 +132,62 @@ class PDFActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.textViewClienteBanco).text = clienteBanco
         findViewById<TextView>(R.id.textViewClienteNumeroBanco).text = clienteNumeroBanco
 
+    }
+    // Método para iniciar la actividad de escaneo QR
+    private fun startQRScan() {
+        val intent = Intent(this, QRScanActivity::class.java)
+        qrScanLauncher.launch(intent)
+    }
+
+    // Manejar el resultado del escaneo QR
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == REQUEST_CODE_QR_SCAN && resultCode == RESULT_OK) {
+            val scannedData = data?.getStringExtra("SCANNED_DATA")
+            scannedData?.let {
+                // Mostrar un mensaje con los datos escaneados
+                Toast.makeText(this, "Datos escaneados: $it", Toast.LENGTH_SHORT).show()
+
+                // Crear un intent para iniciar QRDisplayActivity con la información de la factura
+                val intent = Intent(this, QRDisplayActivity::class.java).apply {
+                    // Pasar los datos necesarios para la factura
+                    putExtra("CLIENTE_NOMBRE", clienteNombre)
+                    putExtra("CLIENTE_CEDULA", clienteCedula)
+                    putExtra("CLIENTE_DIRECCION", clienteDireccion)
+                    putExtra("CLIENTE_TELEFONO", clienteTelefono)
+                    putExtra("CLIENTE_BANCO", clienteBanco)
+                    putExtra("CLIENTE_NUMERO_BANCO", clienteNumeroBanco)
+                    putExtra("SCANNED_DATA", it) // Pasar los datos escaneados al intent
+                    // Pasar el precio total como String
+                    putExtra("TOTAL_PRECIO", String.format("%.2f", CartSingleton.getInstance().calculateTotal()))
+                }
+                startActivity(intent)
+            }
+        }
+    }
+
+    // Generar un Bitmap para el código QR
+    private fun generateQRBitmap(text: String, size: Int): Bitmap? {
+        return try {
+            val hints = EnumMap<EncodeHintType, Any>(EncodeHintType::class.java)
+            hints[EncodeHintType.CHARACTER_SET] = "UTF-8"
+            hints[EncodeHintType.MARGIN] = 1
+
+            val bitMatrix: BitMatrix = QRCodeWriter().encode(text, BarcodeFormat.QR_CODE, size, size, hints)
+            val width: Int = bitMatrix.width
+            val height: Int = bitMatrix.height
+            val bmp = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565)
+            for (x in 0 until width) {
+                for (y in 0 until height) {
+                    bmp.setPixel(x, y, if (bitMatrix.get(x, y)) Color.BLACK else Color.WHITE)
+                }
+            }
+            bmp
+        } catch (e: WriterException) {
+            e.printStackTrace()
+            null
+        }
     }
 
     private fun populateTable(products: List<Product>) {
@@ -141,7 +244,7 @@ class PDFActivity : AppCompatActivity() {
                 TableRow.LayoutParams.MATCH_PARENT,
                 2 // Ajuste del grosor del separador
             )
-            setBackgroundColor(Color.BLACK)
+            setBackgroundColor(Color.LTGRAY)
         }
         tableLayout.addView(titleSeparator)
 
@@ -197,7 +300,7 @@ class PDFActivity : AppCompatActivity() {
                     TableRow.LayoutParams.MATCH_PARENT,
                     1 // Ajuste del grosor del separador
                 )
-                setBackgroundColor(Color.GRAY)
+                setBackgroundColor(Color.LTGRAY)
             }
             tableLayout.addView(productSeparator)
         }
@@ -229,7 +332,7 @@ class PDFActivity : AppCompatActivity() {
             alpha = 30 // Opacity of the logo (0-255, where 0 is completely transparent and 255 is completely opaque)
         }
 
-// Draw the scaled logo at the top-left corner of the page
+        // Draw the scaled logo at the top-left corner of the page
         canvas?.drawBitmap(scaledLogo, topRightX, topLeftY, logoPaint)
 
 
@@ -243,7 +346,7 @@ class PDFActivity : AppCompatActivity() {
             val productNameLines = splitProductName(product.nombre)
 
             // Calcular la altura necesaria para la celda según el número de líneas
-            val lineHeight = 20f // Espacio entre líneas
+            val lineHeight = 7f // Espacio entre líneas
             val maxLines = 2 // Máximo dos líneas por celda
             val cellHeight = lineHeight * maxLines
 
@@ -415,7 +518,11 @@ class PDFActivity : AppCompatActivity() {
         // Abrir el archivo PDF generado
         openGeneratedPDF()
     }
+    companion object {
+        const val REQUEST_CODE_QR_SCAN = 1
+    }
 
+    // Compartir el archivo PDF generado
     private fun openGeneratedPDF() {
         // Abrir el archivo PDF generado con una aplicación visor de PDF instalada
         val uri = FileProvider.getUriForFile(

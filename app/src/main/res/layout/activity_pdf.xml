@@ -5,13 +5,6 @@
     android:padding="16dp"
     android:background="#f9f9f9">
 
-    <ImageView
-        android:id="@+id/backgroundImage"
-        android:layout_width="395dp"
-        android:layout_height="715dp"
-        android:alpha="0.1"
-        android:src="@drawable/factu" />
-
     <!-- Título de la factura -->
     <TextView
         android:id="@+id/textViewTitle"
@@ -102,9 +95,9 @@
         android:layout_height="46dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="19dp"
-        android:layout_marginBottom="1dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="65dp"
         android:text="Total: $0.00"
         android:textColor="@android:color/holo_green_dark"
         android:textSize="20sp"
@@ -115,7 +108,7 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/textViewTotal"
-        android:layout_marginStart="130dp"
+        android:layout_marginStart="250dp"
         android:layout_marginTop="-59dp"
         android:backgroundTint="@color/red"
         android:text="PAGAR"
@@ -141,5 +134,19 @@
         android:textColor="@android:color/white"
         android:textSize="15sp"
         android:onClick="onRegresarClick" />
+
+    <Button
+        android:id="@+id/verQRButton"
+        android:layout_width="105dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewTotal"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="-59dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:text="PEDIDO (QR)"
+        android:textColor="@android:color/white"
+        android:onClick="startQRDisplayActivity"/>
+
+
 
 </RelativeLayout>

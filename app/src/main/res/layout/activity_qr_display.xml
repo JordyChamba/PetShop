@@ -1,0 +1,42 @@
+<!-- activity_qr_display.xml -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:gravity="center">
+
+    <ImageView
+        android:id="@+id/qrImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside"
+        tools:src="@drawable/qr"
+        />
+
+    <!-- ImageView para regresar -->
+    <ImageView
+        android:id="@+id/imageViewRegresar"
+        android:layout_width="38dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="657dp"
+        android:background="@drawable/regresar"
+        android:onClick="onRegresarClick" />
+
+    <!-- Botón para regresar -->
+    <Button
+        android:id="@+id/buttonRegresar"
+        android:layout_width="105dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="#43A047"
+        android:text="Regresar"
+        android:textColor="@android:color/white"
+        android:textSize="15sp"
+        android:onClick="onRegresarClick" />
+
+</RelativeLayout>

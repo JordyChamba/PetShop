@@ -10,7 +10,6 @@ class InstruccionesActivity : AppCompatActivity() {
         setContentView(R.layout.activity_instruccion)
     }
 
-    // Método para manejar el clic en la imagen o botón de regresar
     fun onRegresarClick(view: android.view.View) {
         // Finaliza la actividad actual y vuelve a la actividad anterior
         finish()

@@ -22,7 +22,14 @@ public class Product implements Parcelable {
         this.active = true; // Inicialmente está activo
         this.counter = 0;
     }
-
+    public Product(String nombre, double precio, int cantidad) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.cantidad = cantidad;
+        this.inCart = false; // Inicialmente no está en el carrito
+        this.active = true; // Inicialmente está activo
+        this.counter = 0;
+    }
     public Product() {}
 
     protected Product(Parcel in) {
