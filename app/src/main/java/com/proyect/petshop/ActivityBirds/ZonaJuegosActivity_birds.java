@@ -1,6 +1,7 @@
 package com.proyect.petshop.ActivityBirds;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,10 +15,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.proyect.petshop.ActivityCats.VestimentaActivity_cats;
 import com.proyect.petshop.R;
+import com.proyect.petshop.activityDogs.AlimentosActivity_dogs;
 import com.proyect.petshop.adapters.CarritoActivity;
 import com.proyect.petshop.adapters.ProductAdapter;
 import com.proyect.petshop.models.Product;
 import com.proyect.petshop.adapters.CartSingleton;
+import com.proyect.petshop.views.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -90,6 +93,11 @@ public class ZonaJuegosActivity_birds extends AppCompatActivity implements Produ
 
         // Inicializar SearchView
         searchView = findViewById(R.id.searchView);
+
+        //notificador contador
+        SharedPreferences sharedPreferences = getSharedPreferences("cart_prefs", MODE_PRIVATE);
+        int cartItemCount = sharedPreferences.getInt("cart_item_count", 0);
+        cartItemCountTextView.setText(String.valueOf(cartItemCount));
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -103,14 +111,22 @@ public class ZonaJuegosActivity_birds extends AppCompatActivity implements Produ
                 return true;
             }
         });
-
-        // Botón "Compra rápida"
+// Botón "Compra rápida"
         Button buttonQuickBuy = findViewById(R.id.buttonQuickBuy);
-        buttonQuickBuy.setOnClickListener(v -> {
-            // Navegar hacia CarritoActivity
-            Intent intent = new Intent(ZonaJuegosActivity_birds.this, CarritoActivity.class);
-            startActivity(intent);
-        });
+        ImageView imageViewPrincipal = findViewById(R.id.imageViewPrincipal);
+
+        View.OnClickListener quickBuyClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Navegar hacia CarritoActivity
+                Intent intent = new Intent(ZonaJuegosActivity_birds.this, CarritoActivity.class);
+                startActivity(intent);
+            }
+        };
+
+        buttonQuickBuy.setOnClickListener(quickBuyClickListener);
+        imageViewPrincipal.setOnClickListener(quickBuyClickListener);
+
         // Configurar el botón de regreso (ImageView)
         ImageView imageViewRegresar = findViewById(R.id.imageViewRegresar);
         imageViewRegresar.setOnClickListener(new View.OnClickListener() {
@@ -128,6 +144,32 @@ public class ZonaJuegosActivity_birds extends AppCompatActivity implements Produ
                 finish(); // Finaliza la actividad actual
             }
         });
+        ImageView imageViewHome = findViewById(R.id.imageViewHome);
+        Button buttonHome = findViewById(R.id.buttonHome);
+
+        View.OnClickListener homeClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ZonaJuegosActivity_birds.this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
+            }
+        };
+
+        imageViewHome.setOnClickListener(homeClickListener);
+        buttonHome.setOnClickListener(homeClickListener);
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Actualizar el contador del carrito cuando la actividad vuelva a estar en primer plano
+        updateCartItemCount();
+    }
+
+    private void updateCartItemCount() {
+        int itemCount = CartSingleton.getInstance().getCartItemCount();
+        cartItemCountTextView.setText(String.valueOf(itemCount));
     }
 
     private void filterProducts(String query) {

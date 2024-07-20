@@ -1,18 +1,23 @@
 package com.proyect.petshop.activityDogs;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.SearchView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.proyect.petshop.R;
 import com.proyect.petshop.adapters.CarritoActivity;
+import com.proyect.petshop.adapters.CartSingleton;
 import com.proyect.petshop.models.InstruccionesActivity;
 
 public class CaninoActivity extends AppCompatActivity {
+    private TextView textViewNotificationCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +35,7 @@ public class CaninoActivity extends AppCompatActivity {
         ImageView imageViewBook = findViewById(R.id.imageViewBook);
         Button buttonCarrito = findViewById(R.id.buttonCarrito);
         ImageView imageViewCarrito = findViewById(R.id.imageViewCarrito);
+        textViewNotificationCount = findViewById(R.id.cartItemCount);
 
         // Listener para Alimentos
         View.OnClickListener alimentosClickListener = new View.OnClickListener() {
@@ -94,11 +100,29 @@ public class CaninoActivity extends AppCompatActivity {
                 finish(); // Finalizar esta actividad y regresar a la anterior en el stack
             }
         });
+        // Actualizar el contador de notificaciones
+        updateNotificationCount();
     }
 
     // Método para manejar el clic del botón de regresar
     public void onRegresarClick(View view) {
         finish(); // Finalizar esta actividad y regresar a la anterior en el stack
+    }
+
+    // Método para actualizar el contador de notificaciones
+    private void updateNotificationCount() {
+        int count = CartSingleton.getInstance().getCartItemCount();
+
+            textViewNotificationCount.setVisibility(View.VISIBLE);
+            textViewNotificationCount.setText(String.valueOf(count));
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Actualizar el contador cuando la actividad vuelve a ser visible
+        updateNotificationCount();
     }
 
 }

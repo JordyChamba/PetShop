@@ -13,14 +13,22 @@ import com.proyect.petshop.activityDogs.CaninoActivity
 import com.proyect.petshop.ActivityCats.FelinoActivity
 import com.proyect.petshop.ActivityBirds.BirdActivity
 import com.proyect.petshop.adapters.CarritoActivity
+import com.proyect.petshop.adapters.CartSingleton
 import com.proyect.petshop.models.InstruccionesActivity
+import android.content.SharedPreferences
+import android.widget.TextView
+import androidx.preference.PreferenceManager
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var cartItemCountTextView: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         showWelcomeDialog()
+
+        // Inicializar TextView del contador del carrito
+        cartItemCountTextView = findViewById(R.id.cartItemCount)
 
         // Find all buttons and image views
         val buttonCanino = findViewById<Button>(R.id.buttonCanino)
@@ -78,8 +86,20 @@ class MainActivity : AppCompatActivity() {
         }
         buttonCarrito.setOnClickListener { carritoClickListener() }
         imageViewCarrito.setOnClickListener { carritoClickListener() }
+
+        // Inicializar el contador del carrito
+        updateCartItemCount()
+    }
+    override fun onResume() {
+        super.onResume()
+        // Actualizar el contador del carrito cuando la actividad vuelva a estar en primer plano
+        updateCartItemCount()
     }
 
+    private fun updateCartItemCount() {
+        val itemCount = CartSingleton.getInstance().cartItemCount
+        cartItemCountTextView.text = itemCount.toString()
+    }
     private fun showWelcomeDialog() {
         val builder = AlertDialog.Builder(this)
         val dialogView = layoutInflater.inflate(R.layout.dialog_content, null)

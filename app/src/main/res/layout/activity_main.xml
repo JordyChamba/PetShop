@@ -22,7 +22,8 @@
         android:layout_marginTop="100dp"
         android:layout_marginEnd="130dp"
         android:background="@drawable/ico_dog"
-        android:contentDescription="Perro" />
+        android:contentDescription="Perro"
+        android:textStyle="bold"/>
     <Button
         android:id="@+id/buttonCanino"
         android:layout_width="105dp"
@@ -58,7 +59,8 @@
         android:backgroundTint="@color/primary_text_color"
         android:text="Gato"
         android:textColor="@android:color/white"
-        android:textSize="25sp" />
+        android:textSize="25sp"
+        android:textStyle="bold"/>
 
     <!-- Botón "Carrito" -->
 
@@ -83,7 +85,8 @@
         android:backgroundTint="@color/primary_text_color"
         android:text="Aves"
         android:textColor="@android:color/white"
-        android:textSize="25sp" />
+        android:textSize="25sp"
+        android:textStyle="bold"/>
 
     <ImageView
         android:id="@+id/imageViewBook"
@@ -105,7 +108,8 @@
         android:backgroundTint="?attr/colorAccent"
         android:text="README"
         android:textColor="@android:color/white"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        android:textStyle="bold"/>
 
     <ImageView
         android:id="@+id/imageViewCarrito"
@@ -116,6 +120,19 @@
         android:layout_marginTop="365dp"
         android:background="@drawable/ico_carrito"
         android:contentDescription="Car" />
+    <TextView
+        android:id="@+id/cartItemCount"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="200dp"
+        android:layout_marginBottom="90dp"
+        android:background="@drawable/circle_background"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="@android:color/white"
+        android:textSize="12sp"
+        android:textStyle="bold" />
     <Button
         android:id="@+id/buttonCarrito"
         android:layout_width="100dp"
@@ -126,10 +143,11 @@
         android:backgroundTint="@color/blue"
         android:text="CARRITO"
         android:textColor="@android:color/white"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        android:textStyle="bold"/>
 
     <ImageView
-        android:id="@+id/imageViewPrincipal"
+        android:id="@+id/imageViewHome"
         android:layout_width="38dp"
         android:layout_height="35dp"
         android:layout_below="@id/buttonCanino"
@@ -147,7 +165,8 @@
         android:backgroundTint="@color/red"
         android:text="Home"
         android:textColor="@android:color/white"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        android:textStyle="bold"/>
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"

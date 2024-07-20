@@ -15,10 +15,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.preference.PreferenceManager;
 
 import com.proyect.petshop.R;
+import com.proyect.petshop.activityDogs.AlimentosActivity_dogs;
 import com.proyect.petshop.adapters.CarritoActivity;
 import com.proyect.petshop.adapters.ProductAdapter;
 import com.proyect.petshop.models.Product;
 import com.proyect.petshop.adapters.CartSingleton;
+import com.proyect.petshop.views.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,17 +35,12 @@ public class AlimentosActivity_birds extends AppCompatActivity implements Produc
     private List<Product> filteredProductList;
     private SearchView searchView;
     private TextView cartItemCountTextView;
-    private SharedPreferences sharedPreferences;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista);
-
-        // Inicializar RecyclerView
-        recyclerView = findViewById(R.id.recyclerViewProducts);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         cartItemCountTextView = findViewById(R.id.cartItemCount); // Ajusta el ID según tu layout
 
         // Inicializar lista de productos de alimentos para aves
@@ -80,18 +77,22 @@ public class AlimentosActivity_birds extends AppCompatActivity implements Produc
         // Inicializar la lista filtrada
         filteredProductList = new ArrayList<>(productList);
 
+        // Inicializar RecyclerView
+        recyclerView = findViewById(R.id.recyclerViewProducts);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         // Configurar RecyclerView y adaptador
         adapter = new ProductAdapter(this, filteredProductList, this, cartItemCountTextView);
         recyclerView.setAdapter(adapter);
 
-        // Inicializar SharedPreferences
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-
-        // Restaurar el contador global al inicio
-        updateCartItemCount();
-
         // Inicializar SearchView
         searchView = findViewById(R.id.searchView);
+
+        //notificador contador
+        SharedPreferences sharedPreferences = getSharedPreferences("cart_prefs", MODE_PRIVATE);
+        int cartItemCount = sharedPreferences.getInt("cart_item_count", 0);
+        cartItemCountTextView.setText(String.valueOf(cartItemCount));
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -108,11 +109,19 @@ public class AlimentosActivity_birds extends AppCompatActivity implements Produc
 
         // Botón "Compra rápida"
         Button buttonQuickBuy = findViewById(R.id.buttonQuickBuy);
-        buttonQuickBuy.setOnClickListener(v -> {
-            // Navegar hacia CarritoActivity
-            Intent intent = new Intent(AlimentosActivity_birds.this, CarritoActivity.class);
-            startActivity(intent);
-        });
+        ImageView imageViewPrincipal = findViewById(R.id.imageViewPrincipal);
+
+        View.OnClickListener quickBuyClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Navegar hacia CarritoActivity
+                Intent intent = new Intent(AlimentosActivity_birds.this, CarritoActivity.class);
+                startActivity(intent);
+            }
+        };
+
+        buttonQuickBuy.setOnClickListener(quickBuyClickListener);
+        imageViewPrincipal.setOnClickListener(quickBuyClickListener);
 
         // Configurar el botón de regreso (ImageView)
         ImageView imageViewRegresar = findViewById(R.id.imageViewRegresar);
@@ -131,6 +140,33 @@ public class AlimentosActivity_birds extends AppCompatActivity implements Produc
                 finish(); // Finaliza la actividad actual
             }
         });
+        ImageView imageViewHome = findViewById(R.id.imageViewHome);
+        Button buttonHome = findViewById(R.id.buttonHome);
+
+        View.OnClickListener homeClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AlimentosActivity_birds.this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
+            }
+        };
+
+        imageViewHome.setOnClickListener(homeClickListener);
+        buttonHome.setOnClickListener(homeClickListener);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Actualizar el contador del carrito cuando la actividad vuelva a estar en primer plano
+        updateCartItemCount();
+    }
+
+    private void updateCartItemCount() {
+        int itemCount = CartSingleton.getInstance().getCartItemCount();
+        cartItemCountTextView.setText(String.valueOf(itemCount));
     }
 
     private void filterProducts(String query) {
@@ -151,18 +187,6 @@ public class AlimentosActivity_birds extends AppCompatActivity implements Produc
     @Override
     public void onAddToCartClick(Product product) {
         CartSingleton.getInstance().addToCart(product);
-    }
-
-    // Método para actualizar el TextView del contador global
-    private void updateCartItemCount() {
-        int total = 0;
-        for (Product product : productList) {
-            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-            int counter = sharedPreferences.getInt("counter_" + product.getId(), 0);
-            total += counter;
-        }
-        // Actualizar el TextView
-        cartItemCountTextView.setText(String.valueOf(total));
     }
 
 }

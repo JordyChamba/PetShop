@@ -69,7 +69,8 @@
         android:paddingVertical="12dp"
         android:text="Efectivo"
         android:textColor="@android:color/white"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        android:textStyle="bold"/>
 
     <Button
         android:id="@+id/buttonEmergente"
@@ -83,7 +84,8 @@
         android:paddingVertical="12dp"
         android:text="Tarjeta"
         android:textColor="@android:color/white"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/textViewDeletedEmpty"
@@ -116,6 +118,7 @@
         android:text="Regresar"
         android:textColor="@android:color/white"
         android:textSize="15sp"
-        android:onClick="onRegresarClick" />
+        android:onClick="onRegresarClick"
+        android:textStyle="bold"/>
 
 </RelativeLayout>

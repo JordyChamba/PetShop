@@ -34,7 +34,7 @@
                     android:paddingTop="8dp"
                     android:text="Bienvenido a PatApp"
                     android:textColor="@android:color/holo_red_dark"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -43,7 +43,7 @@
                     android:paddingTop="4dp"
                     android:text="PatApp es tu aplicación de confianza para encontrar todo lo que necesitas para tus perros, gatos y aves. Con un enfoque en la simplicidad y la facilidad de uso, nuestra plataforma te permite acceder a productos de alta calidad para el bienestar de tus mascotas."
                     android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    android:textSize="19sp" />
             </LinearLayout>
 
             <!-- Sección Nuestra Historia -->
@@ -65,7 +65,7 @@
                     android:paddingTop="8dp"
                     android:text="Nuestra Historia"
                     android:textColor="@color/red"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -74,7 +74,7 @@
                     android:paddingTop="4dp"
                     android:text="Fundada por amantes de los animales, PatApp comenzó con la misión de facilitar el cuidado de las mascotas. Nos enorgullece ofrecer una solución integral que cubre todas las necesidades de alimentación, entretenimiento y vestimenta."
                     android:textColor="@android:color/black"
-                    android:textSize="16sp" />
+                    android:textSize="19sp" />
             </LinearLayout>
 
             <!-- Sección Nuestra Misión -->
@@ -96,7 +96,7 @@
                     android:paddingTop="8dp"
                     android:text="Nuestra Misión"
                     android:textColor="@color/red"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -105,7 +105,7 @@
                     android:paddingTop="4dp"
                     android:text="Mejorar la vida de las mascotas y sus dueños proporcionando productos de alta calidad y un servicio excepcional."
                     android:textColor="@android:color/black"
-                    android:textSize="16sp" />
+                    android:textSize="19sp" />
             </LinearLayout>
 
             <!-- Sección Nuestra Visión -->
@@ -127,7 +127,7 @@
                     android:paddingTop="8dp"
                     android:text="Nuestra Visión"
                     android:textColor="@color/red"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -136,7 +136,7 @@
                     android:paddingTop="4dp"
                     android:text="Ser la plataforma líder en el mercado de productos para mascotas, reconocida por su innovación, calidad y compromiso con el bienestar animal."
                     android:textColor="@android:color/black"
-                    android:textSize="16sp" />
+                    android:textSize="19sp" />
             </LinearLayout>
 
             <!-- Sección Nuestros Valores -->
@@ -158,7 +158,7 @@
                     android:paddingTop="8dp"
                     android:text="Nuestros Valores"
                     android:textColor="@color/red"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -167,7 +167,7 @@
                     android:paddingTop="4dp"
                     android:text="Compromiso con la calidad, amor por los animales, innovación constante y atención al cliente."
                     android:textColor="@android:color/black"
-                    android:textSize="16sp" />
+                    android:textSize="19sp" />
             </LinearLayout>
 
             <!-- Sección Lo que Ofrecemos -->
@@ -189,7 +189,7 @@
                     android:paddingTop="8dp"
                     android:text="Lo que Ofrecemos"
                     android:textColor="@color/red"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -198,7 +198,7 @@
                     android:paddingTop="4dp"
                     android:text="Perro, Gato y Aves:\nZona de Alimentación: Productos alimenticios de alta calidad y nutrición adecuada.\nJuguetes: Diversión asegurada con juguetes seguros y duraderos.\nVestimenta: Ropa y accesorios para mantener a tus mascotas cómodas y a la moda."
                     android:textColor="@android:color/black"
-                    android:textSize="16sp" />
+                    android:textSize="19sp" />
             </LinearLayout>
 
             <!-- Sección Características Destacadas -->
@@ -220,7 +220,7 @@
                     android:paddingTop="8dp"
                     android:text="Características Destacadas"
                     android:textColor="@color/red"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -229,7 +229,7 @@
                     android:paddingTop="4dp"
                     android:text="Nuestra aplicación es intuitiva y fácil de usar, con métodos de pago seguros (efectivo y tarjeta). Estamos comprometidos con tu satisfacción y ofrecemos soporte continuo."
                     android:textColor="@android:color/black"
-                    android:textSize="16sp" />
+                    android:textSize="19sp" />
             </LinearLayout>
 
             <!-- Sección Conoce al Equipo -->
@@ -251,7 +251,7 @@
                     android:paddingTop="8dp"
                     android:text="Conoce al Equipo"
                     android:textColor="@color/red"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -260,7 +260,7 @@
                     android:paddingTop="4dp"
                     android:text="Detrás de PatApp hay un equipo apasionado y dedicado a mejorar la vida de tus mascotas. Estamos aquí para ayudarte en todo momento."
                     android:textColor="@android:color/black"
-                    android:textSize="16sp" />
+                    android:textSize="19sp" />
             </LinearLayout>
 
             <!-- Sección Conoce al Equipo -->
@@ -280,9 +280,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="8dp"
-                    android:text="Conoctactanos"
+                    android:text="Contactanos"
                     android:textColor="@color/red"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -291,7 +291,7 @@
                     android:paddingTop="4dp"
                     android:text=" Nombre del local: PatApp, Dirección del Local: Av. Patria y 10 de Agosto, Teléfono: 0978451524568 o 02-458745214, Correo: PatApp@hotmail.com."
                     android:textColor="@android:color/black"
-                    android:textSize="16sp" />
+                    android:textSize="19sp" />
             </LinearLayout>
 
         </LinearLayout>
@@ -319,5 +319,6 @@
         android:text="Regresar"
         android:textColor="@android:color/white"
         android:textSize="15sp"
+        android:textStyle="bold"
         android:onClick="onRegresarClick" />
 </RelativeLayout>

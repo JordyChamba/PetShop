@@ -5,15 +5,21 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.proyect.petshop.R
 import com.proyect.petshop.adapters.CarritoActivity
+import com.proyect.petshop.adapters.CartSingleton
 import com.proyect.petshop.models.InstruccionesActivity
 
 class FelinoActivity : AppCompatActivity() {
+    private lateinit var cartItemCountTextView: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_felino)
+
+        // Inicializar TextView del contador del carrito
+        cartItemCountTextView = findViewById(R.id.cartItemCount)
 
         // Botones y sus correspondientes ImageView
         val buttonAlimentos = findViewById<Button>(R.id.buttonAlimentos)
@@ -72,6 +78,18 @@ class FelinoActivity : AppCompatActivity() {
         imageViewRegresar.setOnClickListener {
             finish() // Finalizar esta actividad y regresar a la actividad anterior
         }
+        // Inicializar el contador del carrito
+        updateCartItemCount()
+    }
+    override fun onResume() {
+        super.onResume()
+        // Actualizar el contador del carrito cuando la actividad vuelva a estar en primer plano
+        updateCartItemCount()
+    }
+
+    private fun updateCartItemCount() {
+        val itemCount = CartSingleton.getInstance().cartItemCount
+        cartItemCountTextView.text = itemCount.toString()
     }
     // Método público para manejar el clic de la imagen de regresar
     fun onRegresarClick(view: View) {

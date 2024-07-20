@@ -85,6 +85,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             // Actualizar el TextView del contador global del carrito
             updateCartItemCount();
         });
+
     }
 
     // Método para guardar el contador del producto en SharedPreferences
@@ -131,4 +132,5 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         editor.putInt("cart_count", total);
         editor.apply();
     }
+
 }

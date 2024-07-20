@@ -37,6 +37,7 @@
         android:text="Regresar"
         android:textColor="@android:color/white"
         android:textSize="15sp"
+        android:textStyle="bold"
         android:onClick="onRegresarClick" />
 
 </RelativeLayout>

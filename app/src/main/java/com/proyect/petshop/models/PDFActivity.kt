@@ -72,6 +72,7 @@ class PDFActivity : AppCompatActivity() {
         buttonDownload = findViewById(R.id.buttonDownload)
         buttonQR = findViewById(R.id.verQRButton)
 
+
         val products = CartSingleton.getInstance().getCartItems()
         val totalPrice = CartSingleton.getInstance().calculateTotal()
 

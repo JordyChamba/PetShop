@@ -9,7 +9,7 @@
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:alpha="0.4"
+        android:alpha="0.3"
         android:scaleType="centerCrop"
         android:src="@drawable/logo" />
 
@@ -31,7 +31,8 @@
         android:background="#E8D68A"
         android:text="Alimentos"
         android:textColor="@color/primary_text_color"
-        android:textSize="19sp" />
+        android:textSize="19sp"
+        android:textStyle="bold"/>
 
     <!-- Botón "Zona de Juegos" -->
     <ImageView
@@ -52,7 +53,8 @@
         android:background="#E8D68A"
         android:text="Juegos"
         android:textColor="@color/primary_text_color"
-        android:textSize="19sp" />
+        android:textSize="19sp"
+        android:textStyle="bold"/>
 
     <!-- Botón "Vestimenta" -->
     <ImageView
@@ -73,7 +75,8 @@
         android:background="#E8D68A"
         android:text="OTROS"
         android:textColor="@color/primary_text_color"
-        android:textSize="19sp" />
+        android:textSize="19sp"
+        android:textStyle="bold"/>
 
     <!-- Botón " Home y su imagen " -->
     <ImageView
@@ -95,6 +98,7 @@
         android:text="Regresar"
         android:textColor="@android:color/white"
         android:textSize="15sp"
+        android:textStyle="bold"
         android:onClick="onRegresarClick" />
 
     <!-- Botón " Carrito y su imagen " -->
@@ -106,6 +110,19 @@
         android:layout_marginStart="180dp"
         android:layout_marginTop="458dp"
         android:background="@drawable/ico_carrito" />
+    <TextView
+        android:id="@+id/cartItemCount"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="210dp"
+        android:layout_marginBottom="90dp"
+        android:background="@drawable/circle_background"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="@android:color/white"
+        android:textSize="12sp"
+        android:textStyle="bold" />
     <Button
         android:id="@+id/buttonCarrito"
         android:layout_width="100dp"
@@ -116,6 +133,7 @@
         android:backgroundTint="@color/blue"
         android:text="Carrito"
         android:textColor="@android:color/white"
+        android:textStyle="bold"
         android:textSize="15sp" />
 
     <!-- Botón " Intrucciones y su imagen " -->
@@ -137,6 +155,7 @@
         android:backgroundTint="?attr/colorAccent"
         android:text="README"
         android:textColor="@android:color/white"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        android:textStyle="bold"/>
 
 </RelativeLayout>

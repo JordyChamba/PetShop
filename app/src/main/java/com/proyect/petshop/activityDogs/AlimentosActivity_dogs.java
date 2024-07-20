@@ -1,6 +1,7 @@
 package com.proyect.petshop.activityDogs;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +18,7 @@ import com.proyect.petshop.adapters.CarritoActivity;
 import com.proyect.petshop.adapters.ProductAdapter;
 import com.proyect.petshop.models.Product;
 import com.proyect.petshop.adapters.CartSingleton;
+import com.proyect.petshop.views.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,11 +32,15 @@ public class AlimentosActivity_dogs extends AppCompatActivity implements Product
     private SearchView searchView;
     private TextView cartItemCountTextView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista);
         cartItemCountTextView = findViewById(R.id.cartItemCount); // Ajusta el ID según tu layout
+
+        // Actualizar el contador del carrito
+        updateCartItemCount();
 
         // Inicializar la lista de productos
         productList = new ArrayList<>();
@@ -99,8 +105,6 @@ public class AlimentosActivity_dogs extends AppCompatActivity implements Product
         productList.add(new Product("GUERPO PREMIUM EXPERIENCE TODAS LAS RAZAS", 21.05, R.drawable.cp32, 1));
         productList.add(new Product("(Libra)-GUERPO PREMIUM EXPERIENCE TODAS LAS RAZAS", 0.55, R.drawable.doglibra, 1));
 
-
-
         // Inicializar la lista filtrada
         filteredProductList = new ArrayList<>(productList);
 
@@ -115,6 +119,11 @@ public class AlimentosActivity_dogs extends AppCompatActivity implements Product
 
         // Inicializar SearchView
         searchView = findViewById(R.id.searchView);
+
+        //notificador contador
+        SharedPreferences sharedPreferences = getSharedPreferences("cart_prefs", MODE_PRIVATE);
+        int cartItemCount = sharedPreferences.getInt("cart_item_count", 0);
+        cartItemCountTextView.setText(String.valueOf(cartItemCount));
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -129,11 +138,20 @@ public class AlimentosActivity_dogs extends AppCompatActivity implements Product
         });
         // Botón "Compra rápida"
         Button buttonQuickBuy = findViewById(R.id.buttonQuickBuy);
-        buttonQuickBuy.setOnClickListener(v -> {
-            // Navegar hacia CarritoActivity
-            Intent intent = new Intent(AlimentosActivity_dogs.this, CarritoActivity.class);
-            startActivity(intent);
-        });
+        ImageView imageViewPrincipal = findViewById(R.id.imageViewPrincipal);
+
+        View.OnClickListener quickBuyClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Navegar hacia CarritoActivity
+                Intent intent = new Intent(AlimentosActivity_dogs.this, CarritoActivity.class);
+                startActivity(intent);
+            }
+        };
+
+        buttonQuickBuy.setOnClickListener(quickBuyClickListener);
+        imageViewPrincipal.setOnClickListener(quickBuyClickListener);
+
         // Configurar el botón de regreso (ImageView)
         ImageView imageViewRegresar = findViewById(R.id.imageViewRegresar);
         imageViewRegresar.setOnClickListener(new View.OnClickListener() {
@@ -151,7 +169,33 @@ public class AlimentosActivity_dogs extends AppCompatActivity implements Product
                 finish(); // Finaliza la actividad actual
             }
         });
+
+
+        ImageView imageViewHome = findViewById(R.id.imageViewHome);
+        Button buttonHome = findViewById(R.id.buttonHome);
+
+        View.OnClickListener homeClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AlimentosActivity_dogs.this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
+            }
+        };
+
+        imageViewHome.setOnClickListener(homeClickListener);
+        buttonHome.setOnClickListener(homeClickListener);
     }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Actualizar el contador del carrito cuando la actividad vuelva a estar en primer plano
+        updateCartItemCount();
+    }
+
     private void filterProducts(String query) {
         filteredProductList.clear();
         if (query.isEmpty()) {
@@ -165,6 +209,12 @@ public class AlimentosActivity_dogs extends AppCompatActivity implements Product
         }
         adapter.notifyDataSetChanged();
     }
+
+    private void updateCartItemCount() {
+        int itemCount = CartSingleton.getInstance().getCartItemCount();
+        cartItemCountTextView.setText(String.valueOf(itemCount));
+    }
+
     // Método para manejar el clic en el botón de agregar al carrito
     @Override
     public void onAddToCartClick(Product product) {

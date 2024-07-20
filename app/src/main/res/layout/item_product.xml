@@ -39,7 +39,8 @@
             android:layout_height="wrap_content"
             android:text="Precio: $0.00"
             android:textColor="@android:color/black"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:textStyle="bold"/>
     </LinearLayout>
 
     <!-- Botón y imagen para agregar al carrito -->

@@ -112,7 +112,8 @@
         android:layout_marginTop="-59dp"
         android:backgroundTint="@color/red"
         android:text="PAGAR"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        android:textStyle="bold"/>
 
     <ImageView
         android:id="@+id/imageViewRegresar"
@@ -133,7 +134,8 @@
         android:text="Regresar"
         android:textColor="@android:color/white"
         android:textSize="15sp"
-        android:onClick="onRegresarClick" />
+        android:onClick="onRegresarClick"
+        android:textStyle="bold"/>
 
     <Button
         android:id="@+id/verQRButton"
@@ -145,7 +147,8 @@
         android:backgroundTint="@color/colorPrimary"
         android:text="PEDIDO (QR)"
         android:textColor="@android:color/white"
-        android:onClick="startQRDisplayActivity"/>
+        android:onClick="startQRDisplayActivity"
+        android:textStyle="bold"/>
 
 
 
