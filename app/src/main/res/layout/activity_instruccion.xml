@@ -31,8 +31,10 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="#E8D68A"
                     android:paddingTop="8dp"
                     android:text="Bienvenido a PatApp"
+                    android:gravity="center"
                     android:textColor="@android:color/holo_red_dark"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -40,40 +42,10 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="#DFDEDA"
                     android:paddingTop="4dp"
                     android:text="PatApp es tu aplicación de confianza para encontrar todo lo que necesitas para tus perros, gatos y aves. Con un enfoque en la simplicidad y la facilidad de uso, nuestra plataforma te permite acceder a productos de alta calidad para el bienestar de tus mascotas."
                     android:textColor="@color/black"
-                    android:textSize="19sp" />
-            </LinearLayout>
-
-            <!-- Sección Nuestra Historia -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="366dp"
-                    android:layout_height="245dp"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/ins11" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="8dp"
-                    android:text="Nuestra Historia"
-                    android:textColor="@color/red"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="4dp"
-                    android:text="Fundada por amantes de los animales, PatApp comenzó con la misión de facilitar el cuidado de las mascotas. Nos enorgullece ofrecer una solución integral que cubre todas las necesidades de alimentación, entretenimiento y vestimenta."
-                    android:textColor="@android:color/black"
                     android:textSize="19sp" />
             </LinearLayout>
 
@@ -93,8 +65,10 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="#E8D68A"
                     android:paddingTop="8dp"
                     android:text="Nuestra Misión"
+                    android:gravity="center"
                     android:textColor="@color/red"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -102,6 +76,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="#DFDEDA"
                     android:paddingTop="4dp"
                     android:text="Mejorar la vida de las mascotas y sus dueños proporcionando productos de alta calidad y un servicio excepcional."
                     android:textColor="@android:color/black"
@@ -124,8 +99,10 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="#E8D68A"
                     android:paddingTop="8dp"
                     android:text="Nuestra Visión"
+                    android:gravity="center"
                     android:textColor="@color/red"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -133,39 +110,9 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="#DFDEDA"
                     android:paddingTop="4dp"
                     android:text="Ser la plataforma líder en el mercado de productos para mascotas, reconocida por su innovación, calidad y compromiso con el bienestar animal."
-                    android:textColor="@android:color/black"
-                    android:textSize="19sp" />
-            </LinearLayout>
-
-            <!-- Sección Nuestros Valores -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="366dp"
-                    android:layout_height="245dp"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/ins17" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="8dp"
-                    android:text="Nuestros Valores"
-                    android:textColor="@color/red"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="4dp"
-                    android:text="Compromiso con la calidad, amor por los animales, innovación constante y atención al cliente."
                     android:textColor="@android:color/black"
                     android:textSize="19sp" />
             </LinearLayout>
@@ -186,8 +133,10 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="#E8D68A"
                     android:paddingTop="8dp"
                     android:text="Lo que Ofrecemos"
+                    android:gravity="center"
                     android:textColor="@color/red"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -195,13 +144,33 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="#DFDEDA"
                     android:paddingTop="4dp"
                     android:text="Perro, Gato y Aves:\nZona de Alimentación: Productos alimenticios de alta calidad y nutrición adecuada.\nJuguetes: Diversión asegurada con juguetes seguros y duraderos.\nVestimenta: Ropa y accesorios para mantener a tus mascotas cómodas y a la moda."
                     android:textColor="@android:color/black"
                     android:textSize="19sp" />
             </LinearLayout>
 
-            <!-- Sección Características Destacadas -->
+            <!-- Sección Lo que Ofrecemos -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#E8D68A"
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#E8D68A"
+                    android:paddingTop="4dp"
+                    android:text="Instrucciones: "
+                    android:gravity="center"
+                    android:textColor="@color/red"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <!-- Sección Conoce al Inicio -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -212,13 +181,15 @@
                     android:layout_width="366dp"
                     android:layout_height="245dp"
                     android:scaleType="centerInside"
-                    android:src="@drawable/ins15" />
+                    android:src="@drawable/ins51" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="#E8D68A"
                     android:paddingTop="8dp"
-                    android:text="Características Destacadas"
+                    android:text="Inicio"
+                    android:gravity="center"
                     android:textColor="@color/red"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -226,13 +197,14 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="#DFDEDA"
                     android:paddingTop="4dp"
-                    android:text="Nuestra aplicación es intuitiva y fácil de usar, con métodos de pago seguros (efectivo y tarjeta). Estamos comprometidos con tu satisfacción y ofrecemos soporte continuo."
+                    android:text="En la sección inicio, puedes encontrar tres categorias. Perro, Gato y Aves. Con darle un toque a la imagen o botòn, está te llevará a más secciones de tu mascota seleccionada."
                     android:textColor="@android:color/black"
                     android:textSize="19sp" />
             </LinearLayout>
 
-            <!-- Sección Conoce al Equipo -->
+            <!-- Sección Conoce al Categoría  -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -243,13 +215,15 @@
                     android:layout_width="366dp"
                     android:layout_height="245dp"
                     android:scaleType="centerInside"
-                    android:src="@drawable/ins14" />
+                    android:src="@drawable/inst52" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="#E8D68A"
                     android:paddingTop="8dp"
-                    android:text="Conoce al Equipo"
+                    android:text="Mascota seleccionada"
+                    android:gravity="center"
                     android:textColor="@color/red"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -257,8 +231,213 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="#DFDEDA"
                     android:paddingTop="4dp"
-                    android:text="Detrás de PatApp hay un equipo apasionado y dedicado a mejorar la vida de tus mascotas. Estamos aquí para ayudarte en todo momento."
+                    android:text="Una vez seleccionada tu mascota, puedes observar tres secciones más. Una es de alimentación, otra de juegos y de vestimenta u otros. En cada sección podras observar diferentes productos de alta calidad para tu mascota. "
+                    android:textColor="@android:color/black"
+                    android:textSize="19sp" />
+            </LinearLayout>
+
+            <!-- Sección Conoce al Prodcutos   -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="366dp"
+                    android:layout_height="245dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/inst53" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#E8D68A"
+                    android:paddingTop="8dp"
+                    android:text="Selección de productos"
+                    android:gravity="center"
+                    android:textColor="@color/red"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#DFDEDA"
+                    android:paddingTop="4dp"
+                    android:text="En esta sección puedes observar muchos productos y puedes selccionar la cantidad que desees. Una vez que hayas selccionado, nos dirigimos al botón 'Ver Carrito', es la parte donde se podrá observar todos tus productos seleccionados."
+                    android:textColor="@android:color/black"
+                    android:textSize="19sp" />
+            </LinearLayout>
+
+            <!-- Sección Conoce al Forma de pago  -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="366dp"
+                    android:layout_height="245dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/inst54" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#E8D68A"
+                    android:paddingTop="8dp"
+                    android:text="Forma de pago"
+                    android:gravity="center"
+                    android:textColor="@color/red"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#DFDEDA"
+                    android:paddingTop="4dp"
+                    android:text="Cuándo ya no desees comprar más productos en las diferentes secciones. Aquí podrás observar tus productos selccionados anteriormente. Tenemos dos métodos de pago. 'Efectivo' o 'Tarjeta' deberás llenar tus datos solicitados."
+                    android:textColor="@android:color/black"
+                    android:textSize="19sp" />
+            </LinearLayout>
+
+            <!-- Sección Conoce al Llenar datos  -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="366dp"
+                    android:layout_height="245dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/inst55" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#E8D68A"
+                    android:paddingTop="8dp"
+                    android:text="Llenar datos"
+                    android:gravity="center"
+                    android:textColor="@color/red"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#DFDEDA"
+                    android:paddingTop="4dp"
+                    android:text="Cuándo ya hayas elegido 'Efectivo' o 'Tarjeta'. Tienes que llenar tus datos solicitados y aceptar los términos y condiciones."
+                    android:textColor="@android:color/black"
+                    android:textSize="19sp" />
+            </LinearLayout>
+
+            <!-- Sección Conoce al Facturación  -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="366dp"
+                    android:layout_height="245dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/inst56" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#E8D68A"
+                    android:paddingTop="8dp"
+                    android:text="Facturación"
+                    android:gravity="center"
+                    android:textColor="@color/red"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#DFDEDA"
+                    android:paddingTop="4dp"
+                    android:text="Cuándo tus datos ya han sido llenados correctamente. Nos va a dirigir a la pre facturación. Aquí podremos observar más a detalles los productos seleccionados y los precios de cada uno de ellos y el precio total. Como siguiente daramos al botón 'Pedido', para obtener nuestro turno y prodeceder a pagar."
+                    android:textColor="@android:color/black"
+                    android:textSize="19sp" />
+            </LinearLayout>
+
+            <!-- Sección Conoce al Qr  -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="366dp"
+                    android:layout_height="245dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/inst57" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#E8D68A"
+                    android:paddingTop="8dp"
+                    android:text="Pedido"
+                    android:gravity="center"
+                    android:textColor="@color/red"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#DFDEDA"
+                    android:paddingTop="4dp"
+                    android:text="Obtendremos un QR, que será nuestro pedido y espera para prodecer a pagar. "
+                    android:textColor="@android:color/black"
+                    android:textSize="19sp" />
+            </LinearLayout>
+
+            <!-- Sección Conoce al Facturación recibo  -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="366dp"
+                    android:layout_height="245dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/inst58" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#E8D68A"
+                    android:paddingTop="8dp"
+                    android:text="Recibo"
+                    android:gravity="center"
+                    android:textColor="@color/red"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#DFDEDA"
+                    android:paddingTop="4dp"
+                    android:text="Solo tomaremos nuestro recibo con más detalles, tanto del cliente como del local."
                     android:textColor="@android:color/black"
                     android:textSize="19sp" />
             </LinearLayout>
@@ -279,8 +458,10 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="#E8D68A"
                     android:paddingTop="8dp"
                     android:text="Contactanos"
+                    android:gravity="center"
                     android:textColor="@color/red"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -288,6 +469,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="#DFDEDA"
                     android:paddingTop="4dp"
                     android:text=" Nombre del local: PatApp, Dirección del Local: Av. Patria y 10 de Agosto, Teléfono: 0978451524568 o 02-458745214, Correo: PatApp@hotmail.com."
                     android:textColor="@android:color/black"
