@@ -194,7 +194,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="¡Bienvenido a PetShop!"
+                    android:text="¡Bienvenido a PatApp!"
                     android:textColor="@color/primary_text_color"
                     android:textSize="30sp"
                     android:textStyle="bold" />
